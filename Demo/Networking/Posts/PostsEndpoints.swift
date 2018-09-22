@@ -8,13 +8,13 @@
 
 import Foundation
 
-enum Demo {
+enum PostsEndpoints {
     case posts
     case comments
     case users
 }
 
-extension Demo: Endpoint {
+extension PostsEndpoints: Endpoint {
     var base: String {
         return "http://jsonplaceholder.typicode.com"
     }

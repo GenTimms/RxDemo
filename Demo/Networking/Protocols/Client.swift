@@ -9,12 +9,14 @@
 import Foundation
 
 protocol Client {
-    
+
     var session: SessionProtocol { get set }
     
-    func fetchPosts(completion: @escaping (Result<[Post]>) -> Void)
-   
-    func fetch<T: Decodable>(with request: URLRequest, parse: @escaping (Data) -> T?, completion: @escaping (Result<T>) -> Void)
+     associatedtype fetchedObject
+    
+    func fetch(completion: @escaping (Result<[fetchedObject]>) -> Void)
+    
+    func fetchRequest<T: Decodable>(_ request: URLRequest, parse: @escaping (Data) -> T?, completion: @escaping (Result<T>) -> Void)
 }
 
 extension Client {
@@ -42,7 +44,7 @@ extension Client {
         return task
     }
     
-    func fetch<T: Decodable>(with request: URLRequest, parse: @escaping (Data) -> T?, completion: @escaping (Result<T>) -> Void) {
+    func fetchRequest<T: Decodable>(_ request: URLRequest, parse: @escaping (Data) -> T?, completion: @escaping (Result<T>) -> Void) {
         
         let task = jsonTask(request: request) { result in
             
@@ -52,11 +54,13 @@ extension Client {
                 case .success(let data):  do {
                     if let parseResult = parse(data) {
                         completion(Result.success(parseResult))
+                    
                     } else {
                         throw JSONError.parseFailed
                     }
                 } catch {
                     completion(Result.failure(error))
+
                     }
                 }
             }

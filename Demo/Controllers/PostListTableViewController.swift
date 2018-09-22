@@ -11,7 +11,7 @@ import CoreData
 
 class PostListTableViewController: FetchedResultsTableViewController, UISplitViewControllerDelegate {
     
-    var client: Client = DemoClient()
+    var client = PostsClient()
     var dataSource = PostListDataSource()
     var storageManager = PostStorageManager() 
     
@@ -29,7 +29,7 @@ class PostListTableViewController: FetchedResultsTableViewController, UISplitVie
         tableView.separatorInset = .zero
         navigationItem.title = "Post List"
     
-        client.fetchPosts { result in
+        client.fetch { (result) in
             switch result {
             case.success(let fetchedPosts): self.storageManager.insert(fetchedPosts) { error in
                 self.displayErrorNotification(description: "Database Update Error", error: error)
