@@ -1,6 +1,6 @@
 //
 //  Result.swift
-//  BabylonDemo
+//  Demo
 //
 //  Created by Genevieve Timms on 09/09/2018.
 //  Copyright © 2018 GMJT. All rights reserved.

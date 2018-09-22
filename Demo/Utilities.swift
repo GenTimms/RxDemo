@@ -1,6 +1,6 @@
 //
 //  Utilities.swift
-//  BabylonDemo
+//  Demo
 //
 //  Created by Genevieve Timms on 08/09/2018.
 //  Copyright © 2018 GMJT. All rights reserved.

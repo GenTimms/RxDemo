@@ -1,6 +1,6 @@
-///Users/Genni/Documents/Developer/My Apps/BabylonDemo/BabylonDemo/CoreData/Model/CDPost.swift
+//
 //  CDPost.swift
-//  BabylonDemo
+//  Demo
 //
 //  Created by Genevieve Timms on 07/09/2018.
 //  Copyright © 2018 GMJT. All rights reserved.
