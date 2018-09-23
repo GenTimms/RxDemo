@@ -47,6 +47,10 @@
 		B476915E2142B82C003CABF2 /* CDComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B476915D2142B82C003CABF2 /* CDComment.swift */; };
 		B47691602142B840003CABF2 /* CDUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B476915F2142B840003CABF2 /* CDUser.swift */; };
 		B4920A4021566DED007BF31F /* Posts.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B4920A3E21566DED007BF31F /* Posts.xcdatamodeld */; };
+		B494515621579F1500B0374A /* CommentsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B494515521579F1500B0374A /* CommentsClient.swift */; };
+		B494515721579F1500B0374A /* CommentsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B494515521579F1500B0374A /* CommentsClient.swift */; };
+		B494515921579F2000B0374A /* UsersClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B494515821579F2000B0374A /* UsersClient.swift */; };
+		B494515A21579F2000B0374A /* UsersClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B494515821579F2000B0374A /* UsersClient.swift */; };
 		B4A0048121450DA5005F2ADD /* CDUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B476915F2142B840003CABF2 /* CDUser.swift */; };
 		B4A0048321451604005F2ADD /* CDPostTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A0048221451604005F2ADD /* CDPostTests.swift */; };
 		B4A0048521453352005F2ADD /* PostsEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A0048421453352005F2ADD /* PostsEndpoints.swift */; };
@@ -140,6 +144,8 @@
 		B476915D2142B82C003CABF2 /* CDComment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDComment.swift; sourceTree = "<group>"; };
 		B476915F2142B840003CABF2 /* CDUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDUser.swift; sourceTree = "<group>"; };
 		B4920A3F21566DED007BF31F /* Posts.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Posts.xcdatamodel; sourceTree = "<group>"; };
+		B494515521579F1500B0374A /* CommentsClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsClient.swift; sourceTree = "<group>"; };
+		B494515821579F2000B0374A /* UsersClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersClient.swift; sourceTree = "<group>"; };
 		B4A0048221451604005F2ADD /* CDPostTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDPostTests.swift; sourceTree = "<group>"; };
 		B4A0048421453352005F2ADD /* PostsEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsEndpoints.swift; sourceTree = "<group>"; };
 		B4A0048621453D7D005F2ADD /* FetchedResultsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedResultsTableViewController.swift; sourceTree = "<group>"; };
@@ -315,8 +321,8 @@
 		B476915021427DD9003CABF2 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				B4A00493214549B4005F2ADD /* Posts */,
 				B40351F6214654FE000DA66D /* Codable */,
+				B4A00493214549B4005F2ADD /* Clients */,
 				B4A00492214549A5005F2ADD /* Protocols */,
 				B4A0049121454978005F2ADD /* Enums */,
 			);
@@ -348,6 +354,7 @@
 		B4A0049121454978005F2ADD /* Enums */ = {
 			isa = PBXGroup;
 			children = (
+				B4A0048421453352005F2ADD /* PostsEndpoints.swift */,
 				B4A0048E21454955005F2ADD /* Errors.swift */,
 				B4A0048B2145488F005F2ADD /* Result.swift */,
 			);
@@ -363,13 +370,14 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
-		B4A00493214549B4005F2ADD /* Posts */ = {
+		B4A00493214549B4005F2ADD /* Clients */ = {
 			isa = PBXGroup;
 			children = (
-				B4A0048421453352005F2ADD /* PostsEndpoints.swift */,
 				B4A0049421454A12005F2ADD /* PostsClient.swift */,
+				B494515521579F1500B0374A /* CommentsClient.swift */,
+				B494515821579F2000B0374A /* UsersClient.swift */,
 			);
-			path = Posts;
+			path = Clients;
 			sourceTree = "<group>";
 		};
 		B4D6429E2143C473005A587F /* CoreDataTests */ = {
@@ -575,6 +583,7 @@
 				B40351FE2146556A000DA66D /* CodableUser.swift in Sources */,
 				B4DE8C8E21457D74006FDF66 /* PostCellViewModel.swift in Sources */,
 				B476915821429DEF003CABF2 /* User.swift in Sources */,
+				B494515921579F2000B0374A /* UsersClient.swift in Sources */,
 				B4DE8C912145835E006FDF66 /* PostStorageManager.swift in Sources */,
 				B403522521472A62000DA66D /* PostDetailView.swift in Sources */,
 				B4D642A12143C7C7005A587F /* PostListTableViewController.swift in Sources */,
@@ -585,6 +594,7 @@
 				B4DE8C8B21457D58006FDF66 /* PostCell.swift in Sources */,
 				B4F2CF242142E17900C56ED0 /* CoreDataErrors.swift in Sources */,
 				B476915E2142B82C003CABF2 /* CDComment.swift in Sources */,
+				B494515621579F1500B0374A /* CommentsClient.swift in Sources */,
 				B403522821472B15000DA66D /* PostDetailViewModel.swift in Sources */,
 				B4DE8C9721459827006FDF66 /* StoryboardIdentifiers.swift in Sources */,
 				B4A0048F21454955005F2ADD /* Errors.swift in Sources */,
@@ -600,6 +610,7 @@
 				B4A00498214560F6005F2ADD /* AppDelegate.swift in Sources */,
 				B47045E121539DC6002DFE2A /* ClientTests.swift in Sources */,
 				B4A0048D2145488F005F2ADD /* Result.swift in Sources */,
+				B494515A21579F2000B0374A /* UsersClient.swift in Sources */,
 				B4D642B22143EE04005A587F /* User.swift in Sources */,
 				B403522921472B15000DA66D /* PostDetailViewModel.swift in Sources */,
 				B4DE8C9821459827006FDF66 /* StoryboardIdentifiers.swift in Sources */,
@@ -636,6 +647,7 @@
 				B403522D2147EEC0000DA66D /* CDPost.swift in Sources */,
 				B4D642AB2143EDBC005A587F /* CDComment.swift in Sources */,
 				B4DE8C8C21457D58006FDF66 /* PostCell.swift in Sources */,
+				B494515721579F1500B0374A /* CommentsClient.swift in Sources */,
 				B40352142146BE3A000DA66D /* DemoEndpointTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

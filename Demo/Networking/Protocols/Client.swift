@@ -14,7 +14,7 @@ protocol Client {
     
      associatedtype fetchedObject
     
-    func fetch(completion: @escaping (Result<[fetchedObject]>) -> Void)
+    func fetch(group: DispatchGroup?, completion: @escaping (Result<[fetchedObject]>) -> Void)
     
     func fetchRequest<T: Decodable>(_ request: URLRequest, parse: @escaping (Data) -> T?, completion: @escaping (Result<T>) -> Void)
 }

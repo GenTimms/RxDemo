@@ -1,6 +1,6 @@
 //
 //  CoreDataStubs.swift
-//  BabylonDemoTests
+//  DemoTests
 //
 //  Created by Genevieve Timms on 08/09/2018.
 //  Copyright © 2018 GMJT. All rights reserved.
@@ -20,8 +20,8 @@ struct CoreDataStubs {
         return comments
     }()
     
-    static let users = [User(id: 1, name: "Genevieve Timms"),
-                        User(id: 2, name: "Nick Pederson"),
-                        User(id: 3, name: "Rui Peres"),
-                        User(id: 4, name: "Ali Parsa")]
+    static let users = [User(id: 1, name: "Rich Sanchez"),
+                        User(id: 2, name: "Nicholas Rush"),
+                        User(id: 3, name: "Leo Fitz"),
+                        User(id: 4, name: "Troy Barnes")]
 }

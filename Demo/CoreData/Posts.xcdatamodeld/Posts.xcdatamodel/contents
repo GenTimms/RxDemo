@@ -21,8 +21,8 @@
         <relationship name="posts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Post" inverseName="user" inverseEntity="Post" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Comment" positionX="-668" positionY="117" width="128" height="118"/>
-        <element name="Post" positionX="-468" positionY="126" width="128" height="133"/>
-        <element name="User" positionX="-281" positionY="162" width="128" height="88"/>
+        <element name="Post" positionX="-63" positionY="-18" width="128" height="133"/>
+        <element name="Comment" positionX="-198" positionY="69" width="128" height="30"/>
+        <element name="User" positionX="16" positionY="150" width="128" height="88"/>
     </elements>
 </model>
