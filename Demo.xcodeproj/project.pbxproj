@@ -46,7 +46,6 @@
 		B476915C2142B7FB003CABF2 /* CDPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = B476915B2142B7FB003CABF2 /* CDPost.swift */; };
 		B476915E2142B82C003CABF2 /* CDComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B476915D2142B82C003CABF2 /* CDComment.swift */; };
 		B47691602142B840003CABF2 /* CDUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B476915F2142B840003CABF2 /* CDUser.swift */; };
-		B4920A4021566DED007BF31F /* Posts.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B4920A3E21566DED007BF31F /* Posts.xcdatamodeld */; };
 		B494515621579F1500B0374A /* CommentsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B494515521579F1500B0374A /* CommentsClient.swift */; };
 		B494515721579F1500B0374A /* CommentsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B494515521579F1500B0374A /* CommentsClient.swift */; };
 		B494515921579F2000B0374A /* UsersClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B494515821579F2000B0374A /* UsersClient.swift */; };
@@ -65,6 +64,7 @@
 		B4A0049621454A12005F2ADD /* PostsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A0049421454A12005F2ADD /* PostsClient.swift */; };
 		B4A0049721454CF1005F2ADD /* FetchedResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A0048621453D7D005F2ADD /* FetchedResultsTableViewController.swift */; };
 		B4A00498214560F6005F2ADD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B476911E21427D15003CABF2 /* AppDelegate.swift */; };
+		B4CC5ACE2157D5D300FECC3D /* Posts.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B4CC5ACC2157D5D300FECC3D /* Posts.xcdatamodeld */; };
 		B4D642A12143C7C7005A587F /* PostListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D642A02143C7C7005A587F /* PostListTableViewController.swift */; };
 		B4D642A32143CBCD005A587F /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D642A22143CBCC005A587F /* Utilities.swift */; };
 		B4D642A52143CCD8005A587F /* PostListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D642A42143CCD8005A587F /* PostListDataSource.swift */; };
@@ -143,7 +143,6 @@
 		B476915B2142B7FB003CABF2 /* CDPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDPost.swift; sourceTree = "<group>"; };
 		B476915D2142B82C003CABF2 /* CDComment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDComment.swift; sourceTree = "<group>"; };
 		B476915F2142B840003CABF2 /* CDUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDUser.swift; sourceTree = "<group>"; };
-		B4920A3F21566DED007BF31F /* Posts.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Posts.xcdatamodel; sourceTree = "<group>"; };
 		B494515521579F1500B0374A /* CommentsClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsClient.swift; sourceTree = "<group>"; };
 		B494515821579F2000B0374A /* UsersClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersClient.swift; sourceTree = "<group>"; };
 		B4A0048221451604005F2ADD /* CDPostTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDPostTests.swift; sourceTree = "<group>"; };
@@ -153,6 +152,7 @@
 		B4A0048B2145488F005F2ADD /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		B4A0048E21454955005F2ADD /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		B4A0049421454A12005F2ADD /* PostsClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsClient.swift; sourceTree = "<group>"; };
+		B4CC5ACD2157D5D300FECC3D /* Posts.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Posts.xcdatamodel; sourceTree = "<group>"; };
 		B4D642A02143C7C7005A587F /* PostListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListTableViewController.swift; sourceTree = "<group>"; };
 		B4D642A22143CBCC005A587F /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		B4D642A42143CCD8005A587F /* PostListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListDataSource.swift; sourceTree = "<group>"; };
@@ -332,10 +332,10 @@
 		B476915121427DE0003CABF2 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				B4920A3E21566DED007BF31F /* Posts.xcdatamodeld */,
 				B4DE8C902145835E006FDF66 /* PostStorageManager.swift */,
 				B4F2CF232142E17900C56ED0 /* CoreDataErrors.swift */,
 				B4F2CF252142E25100C56ED0 /* Model */,
+				B4CC5ACC2157D5D300FECC3D /* Posts.xcdatamodeld */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -569,10 +569,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4CC5ACE2157D5D300FECC3D /* Posts.xcdatamodeld in Sources */,
 				B4D642A52143CCD8005A587F /* PostListDataSource.swift in Sources */,
 				B40351EF214599EB000DA66D /* PostDetailViewController.swift in Sources */,
 				B47691602142B840003CABF2 /* CDUser.swift in Sources */,
-				B4920A4021566DED007BF31F /* Posts.xcdatamodeld in Sources */,
 				B4A0048521453352005F2ADD /* PostsEndpoints.swift in Sources */,
 				B476915621429DDF003CABF2 /* Comment.swift in Sources */,
 				B4A0048721453D7D005F2ADD /* FetchedResultsTableViewController.swift in Sources */,
@@ -968,12 +968,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		B4920A3E21566DED007BF31F /* Posts.xcdatamodeld */ = {
+		B4CC5ACC2157D5D300FECC3D /* Posts.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				B4920A3F21566DED007BF31F /* Posts.xcdatamodel */,
+				B4CC5ACD2157D5D300FECC3D /* Posts.xcdatamodel */,
 			);
-			currentVersion = B4920A3F21566DED007BF31F /* Posts.xcdatamodel */;
+			currentVersion = B4CC5ACD2157D5D300FECC3D /* Posts.xcdatamodel */;
 			path = Posts.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
