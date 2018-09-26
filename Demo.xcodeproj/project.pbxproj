@@ -53,7 +53,6 @@
 		B4A0048121450DA5005F2ADD /* CDUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B476915F2142B840003CABF2 /* CDUser.swift */; };
 		B4A0048321451604005F2ADD /* CDPostTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A0048221451604005F2ADD /* CDPostTests.swift */; };
 		B4A0048521453352005F2ADD /* PostsEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A0048421453352005F2ADD /* PostsEndpoints.swift */; };
-		B4A0048721453D7D005F2ADD /* FetchedResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A0048621453D7D005F2ADD /* FetchedResultsTableViewController.swift */; };
 		B4A0048921454826005F2ADD /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A0048821454826005F2ADD /* Client.swift */; };
 		B4A0048A2145482D005F2ADD /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A0048821454826005F2ADD /* Client.swift */; };
 		B4A0048C2145488F005F2ADD /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A0048B2145488F005F2ADD /* Result.swift */; };
@@ -62,7 +61,6 @@
 		B4A0049021454955005F2ADD /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A0048E21454955005F2ADD /* Errors.swift */; };
 		B4A0049521454A12005F2ADD /* PostsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A0049421454A12005F2ADD /* PostsClient.swift */; };
 		B4A0049621454A12005F2ADD /* PostsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A0049421454A12005F2ADD /* PostsClient.swift */; };
-		B4A0049721454CF1005F2ADD /* FetchedResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A0048621453D7D005F2ADD /* FetchedResultsTableViewController.swift */; };
 		B4A00498214560F6005F2ADD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B476911E21427D15003CABF2 /* AppDelegate.swift */; };
 		B4CC5ACE2157D5D300FECC3D /* Posts.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B4CC5ACC2157D5D300FECC3D /* Posts.xcdatamodeld */; };
 		B4D642A12143C7C7005A587F /* PostListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D642A02143C7C7005A587F /* PostListTableViewController.swift */; };
@@ -147,7 +145,6 @@
 		B494515821579F2000B0374A /* UsersClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersClient.swift; sourceTree = "<group>"; };
 		B4A0048221451604005F2ADD /* CDPostTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDPostTests.swift; sourceTree = "<group>"; };
 		B4A0048421453352005F2ADD /* PostsEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsEndpoints.swift; sourceTree = "<group>"; };
-		B4A0048621453D7D005F2ADD /* FetchedResultsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedResultsTableViewController.swift; sourceTree = "<group>"; };
 		B4A0048821454826005F2ADD /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		B4A0048B2145488F005F2ADD /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		B4A0048E21454955005F2ADD /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
@@ -395,7 +392,6 @@
 		B4D6429F2143C79A005A587F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				B4A0048621453D7D005F2ADD /* FetchedResultsTableViewController.swift */,
 				B4D642A02143C7C7005A587F /* PostListTableViewController.swift */,
 				B4D642A42143CCD8005A587F /* PostListDataSource.swift */,
 				B40351EE214599EB000DA66D /* PostDetailViewController.swift */,
@@ -575,7 +571,6 @@
 				B47691602142B840003CABF2 /* CDUser.swift in Sources */,
 				B4A0048521453352005F2ADD /* PostsEndpoints.swift in Sources */,
 				B476915621429DDF003CABF2 /* Comment.swift in Sources */,
-				B4A0048721453D7D005F2ADD /* FetchedResultsTableViewController.swift in Sources */,
 				B40351F821465554000DA66D /* CodablePost.swift in Sources */,
 				B4D642A32143CBCD005A587F /* Utilities.swift in Sources */,
 				B4A0048C2145488F005F2ADD /* Result.swift in Sources */,
@@ -620,7 +615,6 @@
 				B4D642AE2143EDF9005A587F /* PostListTableViewController.swift in Sources */,
 				B4D642B421441CCF005A587F /* CoreDataStubs.swift in Sources */,
 				B403520C21467530000DA66D /* CodableCommentTests.swift in Sources */,
-				B4A0049721454CF1005F2ADD /* FetchedResultsTableViewController.swift in Sources */,
 				B4A0048121450DA5005F2ADD /* CDUser.swift in Sources */,
 				B4D642B02143EE00005A587F /* Post.swift in Sources */,
 				B4A0048321451604005F2ADD /* CDPostTests.swift in Sources */,
