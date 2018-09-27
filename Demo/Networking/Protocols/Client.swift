@@ -12,7 +12,7 @@ protocol Client {
 
     var session: SessionProtocol { get set }
     
-     associatedtype fetchedObject
+    associatedtype fetchedObject
     
     func fetch(group: DispatchGroup?, completion: @escaping (Result<[fetchedObject]>) -> Void)
     

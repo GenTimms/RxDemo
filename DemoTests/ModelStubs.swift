@@ -1,12 +1,15 @@
 //
-//  CoreDataStubs.swift
+//  ModelStubs.swift
 //  DemoTests
 //
 //  Created by Genevieve Timms on 08/09/2018.
 //  Copyright © 2018 GMJT. All rights reserved.
 //
 
-struct CoreDataStubs {
+
+@testable import Demo
+
+struct ModelStubs {
     static let posts = [Post(id: 1, userId: 1, title: "Title", body: "Post Body", user: users[0], comments: [comments[0], comments[1]]),
                         Post(id: 2, userId: 2, title: "Title", body: "Post Body", user: users[1], comments: [comments[2], comments[3]]),
                         Post(id: 3, userId: 3, title: "Title", body: "Post Body", user: users[2], comments: [comments[4], comments[5]]),

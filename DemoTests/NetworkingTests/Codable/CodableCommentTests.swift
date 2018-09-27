@@ -12,7 +12,9 @@ import XCTest
 class CodableCommentTests: XCTestCase {
     
     let data: Data! = {
+        
         if let path = Bundle.main.path(forResource: "comments", ofType: "json") {
+            print("Path Found")
             let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
             return data
         }

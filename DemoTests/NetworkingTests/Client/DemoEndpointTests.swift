@@ -9,7 +9,8 @@
 import XCTest
 @testable import Demo
 
-class DemoEndpointTests: XCTestCase {
+class PostsEndpointsEndpointTests: XCTestCase {
+  
     
     let demoPostsURL = URL(string: "http://jsonplaceholder.typicode.com/posts")
     let demoCommentsURL = URL(string: "http://jsonplaceholder.typicode.com/comments")
@@ -18,15 +19,15 @@ class DemoEndpointTests: XCTestCase {
     func testEndpointURLs_equalDemoAPIURLs() {
         
         //Posts
-        let postsURL = Demo.posts.url
+        let postsURL = PostsEndpoints.posts.url
         XCTAssertEqual(postsURL, demoPostsURL)
         
         //Comments
-        let commentsURL = Demo.comments.url
+        let commentsURL = PostsEndpoints.comments.url
         XCTAssertEqual(commentsURL, demoCommentsURL)
         
         //Users
-        let usersURL = Demo.users.url
+        let usersURL = PostsEndpoints.users.url
         XCTAssertEqual(usersURL, demoUsersURL)
         
     }
@@ -34,15 +35,15 @@ class DemoEndpointTests: XCTestCase {
     func testEndpointRequest_equalsURLRequest() {
         
         //Posts
-        let postsRequest = Demo.posts.request
+        let postsRequest = PostsEndpoints.posts.request
         XCTAssertEqual(postsRequest, URLRequest(url: demoPostsURL!))
         
         //Comments
-        let commentsRequest = Demo.comments.request
+        let commentsRequest = PostsEndpoints.comments.request
         XCTAssertEqual(commentsRequest, URLRequest(url: demoCommentsURL!))
         
         //Users
-        let usersRequest = Demo.users.request
+        let usersRequest = PostsEndpoints.users.request
         XCTAssertEqual(usersRequest, URLRequest(url: demoUsersURL!))
         
     }

@@ -8,33 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		B40351EF214599EB000DA66D /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40351EE214599EB000DA66D /* PostDetailViewController.swift */; };
-		B40351F0214599ED000DA66D /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40351EE214599EB000DA66D /* PostDetailViewController.swift */; };
 		B40351F22145B43F000DA66D /* IndieFlower.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B40351F12145B43F000DA66D /* IndieFlower.ttf */; };
 		B40351F42145D1D6000DA66D /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40351F32145D1D6000DA66D /* Endpoint.swift */; };
-		B40351F52145D1D6000DA66D /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40351F32145D1D6000DA66D /* Endpoint.swift */; };
 		B40351F821465554000DA66D /* CodablePost.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40351F721465554000DA66D /* CodablePost.swift */; };
-		B40351F921465554000DA66D /* CodablePost.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40351F721465554000DA66D /* CodablePost.swift */; };
 		B40351FB21465560000DA66D /* CodableComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40351FA21465560000DA66D /* CodableComment.swift */; };
-		B40351FC21465560000DA66D /* CodableComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40351FA21465560000DA66D /* CodableComment.swift */; };
 		B40351FE2146556A000DA66D /* CodableUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40351FD2146556A000DA66D /* CodableUser.swift */; };
-		B40351FF2146556A000DA66D /* CodableUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40351FD2146556A000DA66D /* CodableUser.swift */; };
-		B40352042146748C000DA66D /* comments.json in Resources */ = {isa = PBXBuildFile; fileRef = B40352012146748B000DA66D /* comments.json */; };
-		B40352052146748C000DA66D /* users.json in Resources */ = {isa = PBXBuildFile; fileRef = B40352022146748C000DA66D /* users.json */; };
-		B40352062146748C000DA66D /* posts.json in Resources */ = {isa = PBXBuildFile; fileRef = B40352032146748C000DA66D /* posts.json */; };
 		B4035208214674EE000DA66D /* CodablePostTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4035207214674EE000DA66D /* CodablePostTests.swift */; };
 		B403520A21467518000DA66D /* CodableUserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B403520921467518000DA66D /* CodableUserTests.swift */; };
 		B403520C21467530000DA66D /* CodableCommentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B403520B21467530000DA66D /* CodableCommentTests.swift */; };
-		B403520D21468D6A000DA66D /* posts.json in Resources */ = {isa = PBXBuildFile; fileRef = B40352032146748C000DA66D /* posts.json */; };
-		B403520E21468D6C000DA66D /* comments.json in Resources */ = {isa = PBXBuildFile; fileRef = B40352012146748B000DA66D /* comments.json */; };
-		B403520F21468D6E000DA66D /* users.json in Resources */ = {isa = PBXBuildFile; fileRef = B40352022146748C000DA66D /* users.json */; };
-		B40352102146B9CD000DA66D /* PostsEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A0048421453352005F2ADD /* PostsEndpoints.swift */; };
 		B40352122146BAAA000DA66D /* DemoClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40352112146BAAA000DA66D /* DemoClientTests.swift */; };
 		B40352142146BE3A000DA66D /* DemoEndpointTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40352132146BE3A000DA66D /* DemoEndpointTests.swift */; };
 		B403522521472A62000DA66D /* PostDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B403522421472A62000DA66D /* PostDetailView.swift */; };
-		B403522621472A62000DA66D /* PostDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B403522421472A62000DA66D /* PostDetailView.swift */; };
 		B403522821472B15000DA66D /* PostDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B403522721472B15000DA66D /* PostDetailViewModel.swift */; };
-		B403522921472B15000DA66D /* PostDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B403522721472B15000DA66D /* PostDetailViewModel.swift */; };
-		B403522D2147EEC0000DA66D /* CDPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = B476915B2142B7FB003CABF2 /* CDPost.swift */; };
+		B42F5770215C3AF80075442C /* PostCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42F576F215C3AF80075442C /* PostCellTests.swift */; };
+		B42F5772215C3BC20075442C /* PostDetailViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42F5771215C3BC20075442C /* PostDetailViewTests.swift */; };
+		B42F5777215C4E050075442C /* PostCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42F5776215C4E050075442C /* PostCellViewModelTests.swift */; };
 		B47045E121539DC6002DFE2A /* ClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47045E021539DC6002DFE2A /* ClientTests.swift */; };
 		B476911F21427D15003CABF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B476911E21427D15003CABF2 /* AppDelegate.swift */; };
 		B476912421427D15003CABF2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B476912221427D15003CABF2 /* Main.storyboard */; };
@@ -47,47 +35,29 @@
 		B476915E2142B82C003CABF2 /* CDComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B476915D2142B82C003CABF2 /* CDComment.swift */; };
 		B47691602142B840003CABF2 /* CDUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B476915F2142B840003CABF2 /* CDUser.swift */; };
 		B494515621579F1500B0374A /* CommentsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B494515521579F1500B0374A /* CommentsClient.swift */; };
-		B494515721579F1500B0374A /* CommentsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B494515521579F1500B0374A /* CommentsClient.swift */; };
 		B494515921579F2000B0374A /* UsersClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B494515821579F2000B0374A /* UsersClient.swift */; };
-		B494515A21579F2000B0374A /* UsersClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B494515821579F2000B0374A /* UsersClient.swift */; };
-		B4A0048121450DA5005F2ADD /* CDUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B476915F2142B840003CABF2 /* CDUser.swift */; };
-		B4A0048321451604005F2ADD /* CDPostTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A0048221451604005F2ADD /* CDPostTests.swift */; };
 		B4A0048521453352005F2ADD /* PostsEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A0048421453352005F2ADD /* PostsEndpoints.swift */; };
 		B4A0048921454826005F2ADD /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A0048821454826005F2ADD /* Client.swift */; };
-		B4A0048A2145482D005F2ADD /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A0048821454826005F2ADD /* Client.swift */; };
 		B4A0048C2145488F005F2ADD /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A0048B2145488F005F2ADD /* Result.swift */; };
-		B4A0048D2145488F005F2ADD /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A0048B2145488F005F2ADD /* Result.swift */; };
 		B4A0048F21454955005F2ADD /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A0048E21454955005F2ADD /* Errors.swift */; };
-		B4A0049021454955005F2ADD /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A0048E21454955005F2ADD /* Errors.swift */; };
 		B4A0049521454A12005F2ADD /* PostsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A0049421454A12005F2ADD /* PostsClient.swift */; };
-		B4A0049621454A12005F2ADD /* PostsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A0049421454A12005F2ADD /* PostsClient.swift */; };
-		B4A00498214560F6005F2ADD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B476911E21427D15003CABF2 /* AppDelegate.swift */; };
 		B4CC5ACE2157D5D300FECC3D /* Posts.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B4CC5ACC2157D5D300FECC3D /* Posts.xcdatamodeld */; };
 		B4D642A12143C7C7005A587F /* PostListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D642A02143C7C7005A587F /* PostListTableViewController.swift */; };
 		B4D642A32143CBCD005A587F /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D642A22143CBCC005A587F /* Utilities.swift */; };
 		B4D642A52143CCD8005A587F /* PostListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D642A42143CCD8005A587F /* PostListDataSource.swift */; };
-		B4D642A72143D400005A587F /* CoreDataTestStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D642A62143D400005A587F /* CoreDataTestStack.swift */; };
-		B4D642A92143DCAB005A587F /* CDUserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D642A82143DCAB005A587F /* CDUserTests.swift */; };
-		B4D642AB2143EDBC005A587F /* CDComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B476915D2142B82C003CABF2 /* CDComment.swift */; };
-		B4D642AD2143EDF7005A587F /* PostListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D642A42143CCD8005A587F /* PostListDataSource.swift */; };
-		B4D642AE2143EDF9005A587F /* PostListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D642A02143C7C7005A587F /* PostListTableViewController.swift */; };
-		B4D642AF2143EDFD005A587F /* CoreDataErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F2CF232142E17900C56ED0 /* CoreDataErrors.swift */; };
-		B4D642B02143EE00005A587F /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = B476915321429D76003CABF2 /* Post.swift */; };
-		B4D642B12143EE02005A587F /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B476915521429DDF003CABF2 /* Comment.swift */; };
-		B4D642B22143EE04005A587F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B476915721429DEF003CABF2 /* User.swift */; };
-		B4D642B421441CCF005A587F /* CoreDataStubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D642B321441CCF005A587F /* CoreDataStubs.swift */; };
-		B4D642B621441FF0005A587F /* CDCommentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D642B521441FF0005A587F /* CDCommentTests.swift */; };
-		B4DE8C89214577F1006FDF66 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D642A22143CBCC005A587F /* Utilities.swift */; };
+		B4D642B421441CCF005A587F /* ModelStubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D642B321441CCF005A587F /* ModelStubs.swift */; };
 		B4DE8C8B21457D58006FDF66 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DE8C8A21457D58006FDF66 /* PostCell.swift */; };
-		B4DE8C8C21457D58006FDF66 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DE8C8A21457D58006FDF66 /* PostCell.swift */; };
 		B4DE8C8E21457D74006FDF66 /* PostCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DE8C8D21457D74006FDF66 /* PostCellViewModel.swift */; };
-		B4DE8C8F21457D74006FDF66 /* PostCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DE8C8D21457D74006FDF66 /* PostCellViewModel.swift */; };
 		B4DE8C912145835E006FDF66 /* PostStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DE8C902145835E006FDF66 /* PostStorageManager.swift */; };
-		B4DE8C922145835E006FDF66 /* PostStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DE8C902145835E006FDF66 /* PostStorageManager.swift */; };
 		B4DE8C9721459827006FDF66 /* StoryboardIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DE8C9621459827006FDF66 /* StoryboardIdentifiers.swift */; };
-		B4DE8C9821459827006FDF66 /* StoryboardIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DE8C9621459827006FDF66 /* StoryboardIdentifiers.swift */; };
+		B4F06DBF215D02E200F7EEB0 /* PostDetailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F06DBE215D02E200F7EEB0 /* PostDetailViewModelTests.swift */; };
+		B4F06DE7215D260200F7EEB0 /* posts.json in Resources */ = {isa = PBXBuildFile; fileRef = B40352032146748C000DA66D /* posts.json */; };
+		B4F06DE8215D260400F7EEB0 /* comments.json in Resources */ = {isa = PBXBuildFile; fileRef = B40352012146748B000DA66D /* comments.json */; };
+		B4F06DE9215D260700F7EEB0 /* users.json in Resources */ = {isa = PBXBuildFile; fileRef = B40352022146748C000DA66D /* users.json */; };
+		B4F06DEC215D28E700F7EEB0 /* posts.json in Resources */ = {isa = PBXBuildFile; fileRef = B40352032146748C000DA66D /* posts.json */; };
+		B4F06DED215D28EA00F7EEB0 /* comments.json in Resources */ = {isa = PBXBuildFile; fileRef = B40352012146748B000DA66D /* comments.json */; };
+		B4F06DEE215D28EE00F7EEB0 /* users.json in Resources */ = {isa = PBXBuildFile; fileRef = B40352022146748C000DA66D /* users.json */; };
 		B4F2CF242142E17900C56ED0 /* CoreDataErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F2CF232142E17900C56ED0 /* CoreDataErrors.swift */; };
-		B4F962052153E910009C166C /* ParentModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F962042153E910009C166C /* ParentModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,7 +86,7 @@
 		B40351FD2146556A000DA66D /* CodableUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableUser.swift; sourceTree = "<group>"; };
 		B40352012146748B000DA66D /* comments.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = comments.json; sourceTree = "<group>"; };
 		B40352022146748C000DA66D /* users.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = users.json; sourceTree = "<group>"; };
-		B40352032146748C000DA66D /* posts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = posts.json; sourceTree = "<group>"; };
+		B40352032146748C000DA66D /* posts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = posts.json; path = "DemoTests/NetworkingTests/JSON Files/posts.json"; sourceTree = SOURCE_ROOT; };
 		B4035207214674EE000DA66D /* CodablePostTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodablePostTests.swift; sourceTree = "<group>"; };
 		B403520921467518000DA66D /* CodableUserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableUserTests.swift; sourceTree = "<group>"; };
 		B403520B21467530000DA66D /* CodableCommentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableCommentTests.swift; sourceTree = "<group>"; };
@@ -125,6 +95,9 @@
 		B403522421472A62000DA66D /* PostDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailView.swift; sourceTree = "<group>"; };
 		B403522721472B15000DA66D /* PostDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewModel.swift; sourceTree = "<group>"; };
 		B40352312147FB2D000DA66D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B42F576F215C3AF80075442C /* PostCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCellTests.swift; sourceTree = "<group>"; };
+		B42F5771215C3BC20075442C /* PostDetailViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewTests.swift; sourceTree = "<group>"; };
+		B42F5776215C4E050075442C /* PostCellViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCellViewModelTests.swift; sourceTree = "<group>"; };
 		B47045E021539DC6002DFE2A /* ClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientTests.swift; sourceTree = "<group>"; };
 		B476911B21427D15003CABF2 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B476911E21427D15003CABF2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -143,7 +116,6 @@
 		B476915F2142B840003CABF2 /* CDUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDUser.swift; sourceTree = "<group>"; };
 		B494515521579F1500B0374A /* CommentsClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsClient.swift; sourceTree = "<group>"; };
 		B494515821579F2000B0374A /* UsersClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersClient.swift; sourceTree = "<group>"; };
-		B4A0048221451604005F2ADD /* CDPostTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDPostTests.swift; sourceTree = "<group>"; };
 		B4A0048421453352005F2ADD /* PostsEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsEndpoints.swift; sourceTree = "<group>"; };
 		B4A0048821454826005F2ADD /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		B4A0048B2145488F005F2ADD /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
@@ -153,16 +125,13 @@
 		B4D642A02143C7C7005A587F /* PostListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListTableViewController.swift; sourceTree = "<group>"; };
 		B4D642A22143CBCC005A587F /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		B4D642A42143CCD8005A587F /* PostListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListDataSource.swift; sourceTree = "<group>"; };
-		B4D642A62143D400005A587F /* CoreDataTestStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataTestStack.swift; sourceTree = "<group>"; };
-		B4D642A82143DCAB005A587F /* CDUserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDUserTests.swift; sourceTree = "<group>"; };
-		B4D642B321441CCF005A587F /* CoreDataStubs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStubs.swift; sourceTree = "<group>"; };
-		B4D642B521441FF0005A587F /* CDCommentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDCommentTests.swift; sourceTree = "<group>"; };
+		B4D642B321441CCF005A587F /* ModelStubs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelStubs.swift; sourceTree = "<group>"; };
 		B4DE8C8A21457D58006FDF66 /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		B4DE8C8D21457D74006FDF66 /* PostCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCellViewModel.swift; sourceTree = "<group>"; };
 		B4DE8C902145835E006FDF66 /* PostStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostStorageManager.swift; sourceTree = "<group>"; };
 		B4DE8C9621459827006FDF66 /* StoryboardIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardIdentifiers.swift; sourceTree = "<group>"; };
+		B4F06DBE215D02E200F7EEB0 /* PostDetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewModelTests.swift; sourceTree = "<group>"; };
 		B4F2CF232142E17900C56ED0 /* CoreDataErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataErrors.swift; sourceTree = "<group>"; };
-		B4F962042153E910009C166C /* ParentModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -250,6 +219,17 @@
 			path = DemoUITests;
 			sourceTree = "<group>";
 		};
+		B42F576E215C39650075442C /* ViewTests */ = {
+			isa = PBXGroup;
+			children = (
+				B42F576F215C3AF80075442C /* PostCellTests.swift */,
+				B42F5771215C3BC20075442C /* PostDetailViewTests.swift */,
+				B42F5776215C4E050075442C /* PostCellViewModelTests.swift */,
+				B4F06DBE215D02E200F7EEB0 /* PostDetailViewModelTests.swift */,
+			);
+			path = ViewTests;
+			sourceTree = "<group>";
+		};
 		B455B5C72147FCCF00BF77BB /* JSON Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -299,9 +279,10 @@
 		B476913521427D18003CABF2 /* DemoTests */ = {
 			isa = PBXGroup;
 			children = (
+				B4D642B321441CCF005A587F /* ModelStubs.swift */,
+				B42F576E215C39650075442C /* ViewTests */,
 				B4F962032153E8F4009C166C /* ModelTests */,
 				B403520021465A5F000DA66D /* NetworkingTests */,
-				B4D6429E2143C473005A587F /* CoreDataTests */,
 				B476913821427D18003CABF2 /* Info.plist */,
 			);
 			path = DemoTests;
@@ -310,7 +291,9 @@
 		B476914F21427DCC003CABF2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B4F961FE2153E147009C166C /* Objects */,
+				B476915321429D76003CABF2 /* Post.swift */,
+				B476915521429DDF003CABF2 /* Comment.swift */,
+				B476915721429DEF003CABF2 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -377,18 +360,6 @@
 			path = Clients;
 			sourceTree = "<group>";
 		};
-		B4D6429E2143C473005A587F /* CoreDataTests */ = {
-			isa = PBXGroup;
-			children = (
-				B4D642A62143D400005A587F /* CoreDataTestStack.swift */,
-				B4D642B321441CCF005A587F /* CoreDataStubs.swift */,
-				B4D642A82143DCAB005A587F /* CDUserTests.swift */,
-				B4D642B521441FF0005A587F /* CDCommentTests.swift */,
-				B4A0048221451604005F2ADD /* CDPostTests.swift */,
-			);
-			path = CoreDataTests;
-			sourceTree = "<group>";
-		};
 		B4D6429F2143C79A005A587F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -409,20 +380,9 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		B4F961FE2153E147009C166C /* Objects */ = {
-			isa = PBXGroup;
-			children = (
-				B476915321429D76003CABF2 /* Post.swift */,
-				B476915521429DDF003CABF2 /* Comment.swift */,
-				B476915721429DEF003CABF2 /* User.swift */,
-			);
-			path = Objects;
-			sourceTree = "<group>";
-		};
 		B4F962032153E8F4009C166C /* ModelTests */ = {
 			isa = PBXGroup;
 			children = (
-				B4F962042153E910009C166C /* ParentModelTests.swift */,
 			);
 			path = ModelTests;
 			sourceTree = "<group>";
@@ -532,12 +492,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				B476912C21427D18003CABF2 /* LaunchScreen.storyboard in Resources */,
-				B403520D21468D6A000DA66D /* posts.json in Resources */,
+				B4F06DEC215D28E700F7EEB0 /* posts.json in Resources */,
 				B476912921427D18003CABF2 /* Assets.xcassets in Resources */,
 				B476912421427D15003CABF2 /* Main.storyboard in Resources */,
-				B403520F21468D6E000DA66D /* users.json in Resources */,
+				B4F06DEE215D28EE00F7EEB0 /* users.json in Resources */,
 				B40351F22145B43F000DA66D /* IndieFlower.ttf in Resources */,
-				B403520E21468D6C000DA66D /* comments.json in Resources */,
+				B4F06DED215D28EA00F7EEB0 /* comments.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -545,9 +505,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B40352052146748C000DA66D /* users.json in Resources */,
-				B40352062146748C000DA66D /* posts.json in Resources */,
-				B40352042146748C000DA66D /* comments.json in Resources */,
+				B4F06DE9215D260700F7EEB0 /* users.json in Resources */,
+				B4F06DE7215D260200F7EEB0 /* posts.json in Resources */,
+				B4F06DE8215D260400F7EEB0 /* comments.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -602,46 +562,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B4A00498214560F6005F2ADD /* AppDelegate.swift in Sources */,
 				B47045E121539DC6002DFE2A /* ClientTests.swift in Sources */,
-				B4A0048D2145488F005F2ADD /* Result.swift in Sources */,
-				B494515A21579F2000B0374A /* UsersClient.swift in Sources */,
-				B4D642B22143EE04005A587F /* User.swift in Sources */,
-				B403522921472B15000DA66D /* PostDetailViewModel.swift in Sources */,
-				B4DE8C9821459827006FDF66 /* StoryboardIdentifiers.swift in Sources */,
+				B4F06DBF215D02E200F7EEB0 /* PostDetailViewModelTests.swift in Sources */,
 				B40352122146BAAA000DA66D /* DemoClientTests.swift in Sources */,
-				B4DE8C8F21457D74006FDF66 /* PostCellViewModel.swift in Sources */,
-				B40351F52145D1D6000DA66D /* Endpoint.swift in Sources */,
-				B4D642AE2143EDF9005A587F /* PostListTableViewController.swift in Sources */,
-				B4D642B421441CCF005A587F /* CoreDataStubs.swift in Sources */,
+				B4D642B421441CCF005A587F /* ModelStubs.swift in Sources */,
 				B403520C21467530000DA66D /* CodableCommentTests.swift in Sources */,
-				B4A0048121450DA5005F2ADD /* CDUser.swift in Sources */,
-				B4D642B02143EE00005A587F /* Post.swift in Sources */,
-				B4A0048321451604005F2ADD /* CDPostTests.swift in Sources */,
-				B4A0049621454A12005F2ADD /* PostsClient.swift in Sources */,
-				B40351F0214599ED000DA66D /* PostDetailViewController.swift in Sources */,
-				B4A0049021454955005F2ADD /* Errors.swift in Sources */,
+				B42F5777215C4E050075442C /* PostCellViewModelTests.swift in Sources */,
 				B403520A21467518000DA66D /* CodableUserTests.swift in Sources */,
-				B4D642AF2143EDFD005A587F /* CoreDataErrors.swift in Sources */,
-				B4DE8C89214577F1006FDF66 /* Utilities.swift in Sources */,
-				B4F962052153E910009C166C /* ParentModelTests.swift in Sources */,
-				B4D642AD2143EDF7005A587F /* PostListDataSource.swift in Sources */,
-				B4DE8C922145835E006FDF66 /* PostStorageManager.swift in Sources */,
-				B4D642A92143DCAB005A587F /* CDUserTests.swift in Sources */,
-				B40352102146B9CD000DA66D /* PostsEndpoints.swift in Sources */,
-				B40351FF2146556A000DA66D /* CodableUser.swift in Sources */,
-				B40351FC21465560000DA66D /* CodableComment.swift in Sources */,
+				B42F5770215C3AF80075442C /* PostCellTests.swift in Sources */,
 				B4035208214674EE000DA66D /* CodablePostTests.swift in Sources */,
-				B403522621472A62000DA66D /* PostDetailView.swift in Sources */,
-				B4D642A72143D400005A587F /* CoreDataTestStack.swift in Sources */,
-				B4A0048A2145482D005F2ADD /* Client.swift in Sources */,
-				B4D642B621441FF0005A587F /* CDCommentTests.swift in Sources */,
-				B4D642B12143EE02005A587F /* Comment.swift in Sources */,
-				B40351F921465554000DA66D /* CodablePost.swift in Sources */,
-				B403522D2147EEC0000DA66D /* CDPost.swift in Sources */,
-				B4D642AB2143EDBC005A587F /* CDComment.swift in Sources */,
-				B4DE8C8C21457D58006FDF66 /* PostCell.swift in Sources */,
-				B494515721579F1500B0374A /* CommentsClient.swift in Sources */,
+				B42F5772215C3BC20075442C /* PostDetailViewTests.swift in Sources */,
 				B40352142146BE3A000DA66D /* DemoEndpointTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -886,7 +816,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 49CT65B35K;
-				INFOPLIST_FILE = BabylonDemoUITests/Info.plist;
+				INFOPLIST_FILE = DemoUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -896,7 +826,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = BabylonDemo;
+				TEST_TARGET_NAME = Demo;
 			};
 			name = Debug;
 		};
@@ -906,7 +836,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 49CT65B35K;
-				INFOPLIST_FILE = BabylonDemoUITests/Info.plist;
+				INFOPLIST_FILE = DemoUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -916,7 +846,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = BabylonDemo;
+				TEST_TARGET_NAME = Demo;
 			};
 			name = Release;
 		};

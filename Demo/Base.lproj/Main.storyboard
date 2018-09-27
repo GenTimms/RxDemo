@@ -33,7 +33,7 @@
         <!--Post List-->
         <scene sceneID="k42-h0-8So">
             <objects>
-                <tableViewController id="6iM-at-RPz" customClass="PostListTableViewController" customModule="Demo" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="PostListViewController" id="6iM-at-RPz" customClass="PostListTableViewController" customModule="Demo" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="2QL-0A-CLT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -75,12 +75,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K9G-r9-s8Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1593" y="-142"/>
+            <point key="canvasLocation" x="1592.8" y="-142.57871064467767"/>
         </scene>
         <!--Post Detail View Controller-->
         <scene sceneID="YRk-j9-rr0">
             <objects>
-                <viewController id="eNK-un-9tW" customClass="PostDetailViewController" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PostDetailViewController" id="eNK-un-9tW" customClass="PostDetailViewController" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jb5-fd-SFb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

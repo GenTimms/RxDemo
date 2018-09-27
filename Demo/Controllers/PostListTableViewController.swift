@@ -11,16 +11,16 @@ import CoreData
 
 class PostListTableViewController: UITableViewController, UISplitViewControllerDelegate {
     
-    var client = PostsClient()
+    var client: PostsClient? = PostsClient()
     var storageManager = PostStorageManager() 
     
-    lazy var dataSource = PostListDataSource(fetchedResultsController: fetchedResultsController)
+    lazy var dataSource: PostListDataSource? = PostListDataSource(fetchedResultsController: fetchedResultsController)
     lazy var fetchedResultsController = storageManager.createFetchedResultsController()
     
     //MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print("ViewDidLoadCalled Client = \(client)")
         configureTableView()
         fetchPosts()
     }
@@ -34,18 +34,20 @@ class PostListTableViewController: UITableViewController, UISplitViewControllerD
     }
     
     private func fetchPosts() {
-        client.fetch { (result) in
-            switch result {
-            case.success(let fetchedPosts): self.storageManager.insert(fetchedPosts) { error in
-                self.displayErrorNotification(description: "Database Update Error", error: error)
+        if let client = client {
+            client.fetch { (result) in
+                switch result {
+                case.success(let fetchedPosts): self.storageManager.insert(fetchedPosts) { error in
+                    self.displayErrorNotification(description: "Database Update Error", error: error)
+                    }
+                case.failure(let error):
+                    self.displayErrorNotification(description: "Network Fetch Error", error: error)
                 }
-            case.failure(let error):
-                self.displayErrorNotification(description: "Network Fetch Error", error: error)
+                self.updateUI()
             }
-            self.updateUI()
         }
     }
-
+    
     private func updateUI()  {
         do { try fetchedResultsController.performFetch()
             tableView.reloadData()
