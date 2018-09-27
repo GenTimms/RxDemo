@@ -20,7 +20,6 @@ class PostListTableViewController: UITableViewController, UISplitViewControllerD
     //MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("ViewDidLoadCalled Client = \(client)")
         configureTableView()
         fetchPosts()
     }
