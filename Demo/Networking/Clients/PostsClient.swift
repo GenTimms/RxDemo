@@ -79,7 +79,7 @@ class PostsClient: Client {
         }
     }
     
-    func fetchPartialPosts(group: DispatchGroup?, completion: @escaping (Result<[Post]>) -> Void) {
+    private func fetchPartialPosts(group: DispatchGroup?, completion: @escaping (Result<[Post]>) -> Void) {
         group?.enter()
         guard let request = PostsEndpoints.posts.request else {
             completion(Result.failure(RequestError.invalidRequest))

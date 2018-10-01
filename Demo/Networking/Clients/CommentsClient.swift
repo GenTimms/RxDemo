@@ -13,7 +13,7 @@ class CommentsClient: Client {
         fetchComments(group: group, completion: completion)
     }
     
-    func fetchComments(group: DispatchGroup?, completion: @escaping (Result<[Comment]>) -> Void) {
+    private func fetchComments(group: DispatchGroup?, completion: @escaping (Result<[Comment]>) -> Void) {
         group?.enter()
         guard let request = PostsEndpoints.comments.request else {
             completion(Result.failure(RequestError.invalidRequest))

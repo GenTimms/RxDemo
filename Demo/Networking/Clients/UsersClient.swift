@@ -16,7 +16,7 @@ class UsersClient: Client {
         fetchUsers(group: group, completion: completion)
     }
     
-    func fetchUsers(group: DispatchGroup?, completion: @escaping (Result<[User]>) -> Void) {
+    private func fetchUsers(group: DispatchGroup?, completion: @escaping (Result<[User]>) -> Void) {
         group?.enter()
         guard let request = PostsEndpoints.users.request else {
             completion(Result.failure(RequestError.invalidRequest))

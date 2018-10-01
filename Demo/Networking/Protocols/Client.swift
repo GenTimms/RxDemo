@@ -52,8 +52,8 @@ extension Client {
                 switch result {
                 case .failure(let error): completion(Result.failure(error))
                 case .success(let data):  do {
-                    if let parseResult = parse(data) {
-                        completion(Result.success(parseResult))
+                    if let parsedResult = parse(data) {
+                        completion(Result.success(parsedResult))
                     
                     } else {
                         throw JSONError.parseFailed
