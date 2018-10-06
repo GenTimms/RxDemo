@@ -78,10 +78,9 @@ class PostsClientTests: XCTestCase {
     
     func testFetch_withComponentErrors_ReturnsError() {
         
-        let nilSession =  MockURLSession(data: nil, urlResponse: nil, error: nil)
-        sut.session = nilSession
-        commentsClient.session = nilSession
-        usersClient.session = nilSession
+        sut.session = MockURLSession(data: nil, urlResponse: nil, error: nil)
+        commentsClient.session = MockURLSession(data: nil, urlResponse: nil, error: nil)
+        usersClient.session = MockURLSession(data: nil, urlResponse: nil, error: nil)
         
         let postsExpectation = expectation(description: "Posts Expectation")
         var caughtError: Error? = nil
