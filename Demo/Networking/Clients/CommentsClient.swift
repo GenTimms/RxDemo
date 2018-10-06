@@ -21,11 +21,7 @@ class CommentsClient: Client {
         }
         
         fetchRequest(request, parse: { (data) -> [Comment]? in
-            if let comments = Comment.createComments(from: data) {
-                return comments
-            } else {
-                return nil
-            }
+            return Comment.createComments(from: data) ?? nil
         }, completion: { result in
             completion(result)
             group?.leave()

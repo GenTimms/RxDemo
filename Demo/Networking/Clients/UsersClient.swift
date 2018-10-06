@@ -24,11 +24,7 @@ class UsersClient: Client {
         }
         
         fetchRequest(request, parse: { (data) -> [User]? in
-            if let users = User.createUsers(from: data) {
-                return users
-            } else {
-                return nil
-            }
+            return User.createUsers(from: data) ?? nil
         }, completion: { result in
             completion(result)
             group?.leave()

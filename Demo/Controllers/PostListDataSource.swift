@@ -26,17 +26,15 @@ class PostListDataSource: NSObject, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let sections = fetchedResultsController.sections, sections.count > 0 {
             return sections[section].numberOfObjects
-        } else {
-            return 0
         }
+            return 0
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if let sections = fetchedResultsController.sections, sections.count > 0 {
             return sections[section].name
-        } else {
-            return nil
         }
+            return nil
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

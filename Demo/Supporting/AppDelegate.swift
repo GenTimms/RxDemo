@@ -15,6 +15,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        if ProcessInfo.processInfo.environment["XCInjectBundleInto"] != nil {
+            window?.rootViewController = UIViewController()
+        }
         return true
     }
 

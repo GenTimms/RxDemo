@@ -33,7 +33,7 @@ class ClientTests: XCTestCase {
     }
     
     //MARK: - Data Return
-    func testFetchRequest_returnsParsedData() {
+    func testFetchRequest_ReturnsParsedData() {
         mockURLSession = MockURLSession(data: jsonData, urlResponse: response, error: nil)
         client.session = mockURLSession
         
@@ -53,7 +53,7 @@ class ClientTests: XCTestCase {
     }
     
     //MARK: - Parse Error Return
-    func testFetchRequest_withInvalidParse_ReturnsParseFailedError() {
+    func testFetchRequest_WithInvalidParse_ReturnsParseFailedError() {
         mockURLSession = MockURLSession(data: jsonData, urlResponse: response, error: nil)
         client.session = mockURLSession
         
@@ -74,7 +74,7 @@ class ClientTests: XCTestCase {
     
     //MARK: - Data Task Error Return
     //Data Task Returns Error
-    func testFetchRequest_withDataTaskError_ReturnsError() {
+    func testFetchRequest_WithDataTaskError_ReturnsError() {
         
         let error = NSError(domain: "SomeError", code: 1234, userInfo: nil)
         
@@ -104,7 +104,7 @@ class ClientTests: XCTestCase {
     }
     
     //Nil Response Returns Error
-    func testFetchRequest_withNilResponse_ReturnsInvalidResponseError() {
+    func testFetchRequest_WithNilResponse_ReturnsInvalidResponseError() {
         
         mockURLSession = MockURLSession(data: jsonData, urlResponse: nil, error: nil)
         client.session = mockURLSession
@@ -133,7 +133,7 @@ class ClientTests: XCTestCase {
     }
     
     //Invalid Response Returns Error
-    func testFetchRequest_withInvalidResponse_ReturnsInvalidResponseDataCodeError() {
+    func testFetchRequest_WithInvalidResponse_ReturnsInvalidResponseDataCodeError() {
         
         let response =  HTTPURLResponse(url: URL(string: "http://fakeURL.com")!, statusCode: 400, httpVersion: nil, headerFields: nil)
         mockURLSession = MockURLSession(data: jsonData, urlResponse: response, error: nil)
@@ -163,7 +163,7 @@ class ClientTests: XCTestCase {
     }
     
     //Data nil Returns Error
-    func testFetchRequest_withNilData_ReturnsDataNilError() {
+    func testFetchRequest_WithNilData_ReturnsDataNilError() {
         
         mockURLSession = MockURLSession(data: nil, urlResponse: response, error: nil)
         client.session = mockURLSession

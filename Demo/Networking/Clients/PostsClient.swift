@@ -19,8 +19,8 @@ class PostsClient: Client {
     var errors = [Error]()
     let postsGroup =  DispatchGroup()
     
-    let commentsClient = CommentsClient()
-    let usersClient = UsersClient()
+    var commentsClient = CommentsClient()
+    var usersClient = UsersClient()
     
     func fetch(group: DispatchGroup? = nil, completion: @escaping (Result<[Post]>) -> Void) {
         group?.enter()
@@ -87,11 +87,7 @@ class PostsClient: Client {
         }
         
         fetchRequest(request, parse: { (data) -> [Post]? in
-            if let posts = Post.createPosts(from: data) {
-                return posts
-            } else {
-                return nil
-            }
+           return Post.createPosts(from: data) ?? nil
         }, completion: { result in
             completion(result)
             group?.leave()
