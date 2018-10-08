@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14135" systemVersion="17G65" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Comment" representedClassName=".CDComment" syncable="YES" codeGenerationType="category">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14315.18" systemVersion="17G65" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Comment" representedClassName="Demo.CDComment" syncable="YES">
         <attribute name="body" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="postId" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="post" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Post" inverseName="comments" inverseEntity="Post" syncable="YES"/>
     </entity>
-    <entity name="Post" representedClassName=".CDPost" syncable="YES" codeGenerationType="category">
+    <entity name="Post" representedClassName="Demo.CDPost" syncable="YES">
         <attribute name="body" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
@@ -15,14 +15,14 @@
         <relationship name="comments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Comment" inverseName="post" inverseEntity="Comment" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="posts" inverseEntity="User" syncable="YES"/>
     </entity>
-    <entity name="User" representedClassName=".CDUser" syncable="YES" codeGenerationType="category">
+    <entity name="User" representedClassName="Demo.CDUser" syncable="YES">
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="posts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Post" inverseName="user" inverseEntity="Post" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Comment" positionX="-504" positionY="9" width="128" height="118"/>
-        <element name="Post" positionX="-252" positionY="-81" width="128" height="133"/>
-        <element name="User" positionX="-36" positionY="45" width="128" height="88"/>
+        <element name="Comment" positionX="-504" positionY="9" width="128" height="120"/>
+        <element name="Post" positionX="-252" positionY="-81" width="128" height="135"/>
+        <element name="User" positionX="-36" positionY="45" width="128" height="90"/>
     </elements>
 </model>

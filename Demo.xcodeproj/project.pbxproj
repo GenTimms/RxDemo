@@ -21,6 +21,14 @@
 		B403522521472A62000DA66D /* PostDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B403522421472A62000DA66D /* PostDetailView.swift */; };
 		B403522821472B15000DA66D /* PostDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B403522721472B15000DA66D /* PostDetailViewModel.swift */; };
 		B40E469B2169182A003CCE90 /* CommentsClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40E469A2169182A003CCE90 /* CommentsClientTests.swift */; };
+		B40E46A321695DE2003CCE90 /* CDUser+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40E469D21695DE2003CCE90 /* CDUser+CoreDataProperties.swift */; };
+		B40E46A521695DE2003CCE90 /* CDPost+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40E469F21695DE2003CCE90 /* CDPost+CoreDataProperties.swift */; };
+		B40E46A721695DE2003CCE90 /* CDComment+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40E46A121695DE2003CCE90 /* CDComment+CoreDataProperties.swift */; };
+		B40E46B021695EEA003CCE90 /* CDPostTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40E46AB21695EEA003CCE90 /* CDPostTests.swift */; };
+		B40E46B121695EEA003CCE90 /* CoreDataTestStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40E46AC21695EEA003CCE90 /* CoreDataTestStack.swift */; };
+		B40E46B221695EEA003CCE90 /* CDCommentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40E46AD21695EEA003CCE90 /* CDCommentTests.swift */; };
+		B40E46B321695EEA003CCE90 /* CDUserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40E46AE21695EEA003CCE90 /* CDUserTests.swift */; };
+		B40E46B421696330003CCE90 /* Posts.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B4CC5ACC2157D5D300FECC3D /* Posts.xcdatamodeld */; };
 		B42F5770215C3AF80075442C /* PostCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42F576F215C3AF80075442C /* PostCellTests.swift */; };
 		B42F5772215C3BC20075442C /* PostDetailViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42F5771215C3BC20075442C /* PostDetailViewTests.swift */; };
 		B42F5777215C4E050075442C /* PostCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42F5776215C4E050075442C /* PostCellViewModelTests.swift */; };
@@ -100,6 +108,13 @@
 		B403522721472B15000DA66D /* PostDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewModel.swift; sourceTree = "<group>"; };
 		B40352312147FB2D000DA66D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B40E469A2169182A003CCE90 /* CommentsClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsClientTests.swift; sourceTree = "<group>"; };
+		B40E469D21695DE2003CCE90 /* CDUser+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDUser+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		B40E469F21695DE2003CCE90 /* CDPost+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDPost+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		B40E46A121695DE2003CCE90 /* CDComment+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDComment+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		B40E46AB21695EEA003CCE90 /* CDPostTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDPostTests.swift; sourceTree = "<group>"; };
+		B40E46AC21695EEA003CCE90 /* CoreDataTestStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataTestStack.swift; sourceTree = "<group>"; };
+		B40E46AD21695EEA003CCE90 /* CDCommentTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDCommentTests.swift; sourceTree = "<group>"; };
+		B40E46AE21695EEA003CCE90 /* CDUserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDUserTests.swift; sourceTree = "<group>"; };
 		B42F576F215C3AF80075442C /* PostCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCellTests.swift; sourceTree = "<group>"; };
 		B42F5771215C3BC20075442C /* PostDetailViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewTests.swift; sourceTree = "<group>"; };
 		B42F5776215C4E050075442C /* PostCellViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCellViewModelTests.swift; sourceTree = "<group>"; };
@@ -230,6 +245,17 @@
 			path = DemoUITests;
 			sourceTree = "<group>";
 		};
+		B40E46A921695EEA003CCE90 /* CoreDataTests */ = {
+			isa = PBXGroup;
+			children = (
+				B40E46AB21695EEA003CCE90 /* CDPostTests.swift */,
+				B40E46AC21695EEA003CCE90 /* CoreDataTestStack.swift */,
+				B40E46AD21695EEA003CCE90 /* CDCommentTests.swift */,
+				B40E46AE21695EEA003CCE90 /* CDUserTests.swift */,
+			);
+			path = CoreDataTests;
+			sourceTree = "<group>";
+		};
 		B42F576E215C39650075442C /* ViewTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -291,6 +317,7 @@
 			isa = PBXGroup;
 			children = (
 				B4D642B321441CCF005A587F /* ModelStubs.swift */,
+				B40E46A921695EEA003CCE90 /* CoreDataTests */,
 				B42F576E215C39650075442C /* ViewTests */,
 				B4F06DEF215D83F600F7EEB0 /* ControllerTests */,
 				B4F962032153E8F4009C166C /* ModelTests */,
@@ -396,6 +423,9 @@
 				B476915B2142B7FB003CABF2 /* CDPost.swift */,
 				B476915D2142B82C003CABF2 /* CDComment.swift */,
 				B476915F2142B840003CABF2 /* CDUser.swift */,
+				B40E469D21695DE2003CCE90 /* CDUser+CoreDataProperties.swift */,
+				B40E469F21695DE2003CCE90 /* CDPost+CoreDataProperties.swift */,
+				B40E46A121695DE2003CCE90 /* CDComment+CoreDataProperties.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -564,6 +594,7 @@
 				B4D642A12143C7C7005A587F /* PostListTableViewController.swift in Sources */,
 				B40351F42145D1D6000DA66D /* Endpoint.swift in Sources */,
 				B4A0048921454826005F2ADD /* Client.swift in Sources */,
+				B40E46A721695DE2003CCE90 /* CDComment+CoreDataProperties.swift in Sources */,
 				B40351FB21465560000DA66D /* CodableComment.swift in Sources */,
 				B476915C2142B7FB003CABF2 /* CDPost.swift in Sources */,
 				B4DE8C8B21457D58006FDF66 /* PostCell.swift in Sources */,
@@ -571,7 +602,9 @@
 				B476915E2142B82C003CABF2 /* CDComment.swift in Sources */,
 				B494515621579F1500B0374A /* CommentsClient.swift in Sources */,
 				B403522821472B15000DA66D /* PostDetailViewModel.swift in Sources */,
+				B40E46A321695DE2003CCE90 /* CDUser+CoreDataProperties.swift in Sources */,
 				B4DE8C9721459827006FDF66 /* StoryboardIdentifiers.swift in Sources */,
+				B40E46A521695DE2003CCE90 /* CDPost+CoreDataProperties.swift in Sources */,
 				B4A0048F21454955005F2ADD /* Errors.swift in Sources */,
 				B476911F21427D15003CABF2 /* AppDelegate.swift in Sources */,
 				B476915421429D76003CABF2 /* Post.swift in Sources */,
@@ -583,6 +616,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B4AFCB7F2160F8DF00EF6A0C /* MockURLSession.swift in Sources */,
+				B40E46B121695EEA003CCE90 /* CoreDataTestStack.swift in Sources */,
+				B40E46B221695EEA003CCE90 /* CDCommentTests.swift in Sources */,
+				B40E46B421696330003CCE90 /* Posts.xcdatamodeld in Sources */,
 				B4F06DBF215D02E200F7EEB0 /* PostDetailViewModelTests.swift in Sources */,
 				B40E469B2169182A003CCE90 /* CommentsClientTests.swift in Sources */,
 				B40352122146BAAA000DA66D /* PostsClientTests.swift in Sources */,
@@ -592,11 +628,13 @@
 				B4F06DF1215D843100F7EEB0 /* PostDetailViewControllerTests.swift in Sources */,
 				B42F5777215C4E050075442C /* PostCellViewModelTests.swift in Sources */,
 				B403520A21467518000DA66D /* CodableUserTests.swift in Sources */,
+				B40E46B321695EEA003CCE90 /* CDUserTests.swift in Sources */,
 				B42F5770215C3AF80075442C /* PostCellTests.swift in Sources */,
 				B4035208214674EE000DA66D /* CodablePostTests.swift in Sources */,
 				B42F5772215C3BC20075442C /* PostDetailViewTests.swift in Sources */,
 				B4AFCB812160F96400EF6A0C /* ClientTests.swift in Sources */,
 				B40352142146BE3A000DA66D /* PostsEndpointsTests.swift in Sources */,
+				B40E46B021695EEA003CCE90 /* CDPostTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
