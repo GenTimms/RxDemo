@@ -12,11 +12,19 @@ import UIKit
 
 class PostStorageManager {
     
-    var persistentContainer: NSPersistentContainer!
+    var viewContext: NSManagedObjectContext
+    var backgroundContext: NSManagedObjectContext
 
-    init(container: NSPersistentContainer) {
-        self.persistentContainer = container
-        self.persistentContainer.viewContext.automaticallyMergesChangesFromParent = true
+    init(backgroundContext: NSManagedObjectContext, viewContext: NSManagedObjectContext) {
+        self.viewContext = viewContext
+        self.backgroundContext = backgroundContext
+    }
+    
+    convenience init(container: NSPersistentContainer) {
+        let viewContext = container.viewContext
+        viewContext.automaticallyMergesChangesFromParent = true
+        let backgroundContext = container.newBackgroundContext()
+        self.init(backgroundContext: backgroundContext, viewContext: viewContext)
     }
     
     convenience init() {
@@ -27,25 +35,23 @@ class PostStorageManager {
     }
     
     func insert(_ posts: [Post], completion: @escaping (Error?) -> Void) {
-        let context = persistentContainer.newBackgroundContext()
-        
-        context.performAndWait  {
-            _ = try? CDPost.findOrCreate(from: posts, in: context)
-            do { try context.save()
+        backgroundContext.performAndWait  {
+            _ = try? CDPost.findOrCreate(from: posts, in: backgroundContext)
+            do { try backgroundContext.save()
             } catch {
                 completion(error)
             }
         }
     }
     
+    //should this be here? //don't want table view knowing about CDPost!
     func createFetchedResultsController() -> NSFetchedResultsController<CDPost> {
-        let context = persistentContainer.viewContext
         let request: NSFetchRequest<CDPost> = CDPost.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
         
         let fetchedResultsController = NSFetchedResultsController<CDPost>(
             fetchRequest: request,
-            managedObjectContext: context,
+            managedObjectContext: viewContext,
             sectionNameKeyPath: nil,
             cacheName: nil)
         

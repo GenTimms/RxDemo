@@ -15,11 +15,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        if ProcessInfo.processInfo.environment["XCInjectBundleInto"] != nil {
-            window?.rootViewController = UIViewController()
+        
+        if ProcessInfo.processInfo.environment["XCInjectBundleInto"] == nil {
+            if let postListViewController = window?.rootViewController?.contents as? PostListTableViewController {
+                postListViewController.storageManager = PostStorageManager()
+                postListViewController.client = PostsClient()
+                postListViewController.initiateFetch()
+            }
         }
         return true
     }
+    
+
 
     func applicationWillTerminate(_ application: UIApplication) {
         self.saveContext()

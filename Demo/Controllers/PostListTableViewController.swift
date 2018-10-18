@@ -11,32 +11,38 @@ import CoreData
 
 class PostListTableViewController: UITableViewController, UISplitViewControllerDelegate {
     
-    var client: PostsClient? = PostsClient()
-    var storageManager = PostStorageManager() 
+    var client: PostsClient?
+    var storageManager: PostStorageManager? 
     
-    lazy var dataSource: PostListDataSource? = PostListDataSource(fetchedResultsController: fetchedResultsController)
-    lazy var fetchedResultsController = storageManager.createFetchedResultsController()
+    var dataSource: PostListDataSource?
+    lazy var fetchedResultsController = storageManager?.createFetchedResultsController()
     
     //MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
-        fetchPosts()
     }
     
     private func configureTableView() {
-        tableView.dataSource = dataSource
-        tableView.delegate = self
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 140
         tableView.separatorInset = .zero
+    }
+    
+    //MARK: - Fetching
+    func initiateFetch() {
+        if client != nil && storageManager != nil {
+            dataSource = PostListDataSource(fetchedResultsController: fetchedResultsController!)
+            tableView.dataSource = dataSource
+            fetchPosts()
+        }
     }
     
     private func fetchPosts() {
         if let client = client {
             client.fetch { (result) in
                 switch result {
-                case.success(let fetchedPosts): self.storageManager.insert(fetchedPosts) { error in
+                case.success(let fetchedPosts): self.storageManager?.insert(fetchedPosts) { error in
                     self.displayErrorNotification(description: "Database Update Error", error: error)
                     }
                 case.failure(let error):
@@ -48,7 +54,7 @@ class PostListTableViewController: UITableViewController, UISplitViewControllerD
     }
     
     private func updateUI()  {
-        do { try fetchedResultsController.performFetch()
+        do { try fetchedResultsController?.performFetch()
             tableView.reloadData()
         } catch {
             displayErrorNotification(description: "Database Fetch Error", error: CoreDataError.fetchRequestFailed)
@@ -73,7 +79,7 @@ class PostListTableViewController: UITableViewController, UISplitViewControllerD
         if segue.identifier == Segues.detailSegue {
             if let postDetailVC = segue.destination.contents as? PostDetailViewController {
                 if let indexPath = sender as? IndexPath {
-                    postDetailVC.post = fetchedResultsController.object(at: indexPath).asPost()
+                    postDetailVC.post = fetchedResultsController?.object(at: indexPath).asPost() //get from data source?
                     collapseDetailViewController = false
                 }
             }

@@ -11,13 +11,11 @@ import CoreData
 @testable import Demo
 
 class CoreDataTestStack {
-    lazy var managedObjectModel: NSManagedObjectModel = {
-        let managedObjectModel = NSManagedObjectModel.mergedModel(from: [Bundle(for: type(of: self))] )!
-        return managedObjectModel
-    }()
-    
+
+   static var managedObjectModel = NSManagedObjectModel.mergedModel(from: [Bundle(for: CoreDataTestStack.self)] )!
+  
     lazy var mockPersistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "Posts", managedObjectModel: self.managedObjectModel)
+        let container = NSPersistentContainer(name: "Posts", managedObjectModel: CoreDataTestStack.managedObjectModel)
         let description = container.persistentStoreDescriptions.first
         description?.type = NSInMemoryStoreType
         description?.shouldAddStoreAsynchronously = false
@@ -50,6 +48,7 @@ class CoreDataTestStack {
 class MockManagedObjectContext: NSManagedObjectContext {
     var expectation: XCTestExpectation?
     
+    var saveThrows = false
     var saveWasCalled = false
     
     override func performAndWait(_ block: () -> Void) {
@@ -58,6 +57,12 @@ class MockManagedObjectContext: NSManagedObjectContext {
     }
     
     override func save() throws {
+        let testError = NSError(domain: "SomeError", code: 1245, userInfo: nil)
+        
+        if saveThrows {
+            throw testError
+        }
+       
         try super.save()
         saveWasCalled = true
     }

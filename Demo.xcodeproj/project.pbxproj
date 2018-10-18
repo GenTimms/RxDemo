@@ -42,6 +42,8 @@
 		B476915C2142B7FB003CABF2 /* CDPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = B476915B2142B7FB003CABF2 /* CDPost.swift */; };
 		B476915E2142B82C003CABF2 /* CDComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B476915D2142B82C003CABF2 /* CDComment.swift */; };
 		B47691602142B840003CABF2 /* CDUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B476915F2142B840003CABF2 /* CDUser.swift */; };
+		B48B8181216E35A800BF6640 /* PostListDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48B8180216E35A800BF6640 /* PostListDataSourceTests.swift */; };
+		B48B8183216E371100BF6640 /* PostStorageManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48B8182216E371100BF6640 /* PostStorageManagerTests.swift */; };
 		B494515621579F1500B0374A /* CommentsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B494515521579F1500B0374A /* CommentsClient.swift */; };
 		B494515921579F2000B0374A /* UsersClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B494515821579F2000B0374A /* UsersClient.swift */; };
 		B4A0048521453352005F2ADD /* PostsEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A0048421453352005F2ADD /* PostsEndpoints.swift */; };
@@ -133,6 +135,8 @@
 		B476915B2142B7FB003CABF2 /* CDPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDPost.swift; sourceTree = "<group>"; };
 		B476915D2142B82C003CABF2 /* CDComment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDComment.swift; sourceTree = "<group>"; };
 		B476915F2142B840003CABF2 /* CDUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDUser.swift; sourceTree = "<group>"; };
+		B48B8180216E35A800BF6640 /* PostListDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListDataSourceTests.swift; sourceTree = "<group>"; };
+		B48B8182216E371100BF6640 /* PostStorageManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostStorageManagerTests.swift; sourceTree = "<group>"; };
 		B494515521579F1500B0374A /* CommentsClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsClient.swift; sourceTree = "<group>"; };
 		B494515821579F2000B0374A /* UsersClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersClient.swift; sourceTree = "<group>"; };
 		B4A0048421453352005F2ADD /* PostsEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsEndpoints.swift; sourceTree = "<group>"; };
@@ -248,10 +252,11 @@
 		B40E46A921695EEA003CCE90 /* CoreDataTests */ = {
 			isa = PBXGroup;
 			children = (
-				B40E46AB21695EEA003CCE90 /* CDPostTests.swift */,
 				B40E46AC21695EEA003CCE90 /* CoreDataTestStack.swift */,
+				B40E46AB21695EEA003CCE90 /* CDPostTests.swift */,
 				B40E46AD21695EEA003CCE90 /* CDCommentTests.swift */,
 				B40E46AE21695EEA003CCE90 /* CDUserTests.swift */,
+				B48B8182216E371100BF6640 /* PostStorageManagerTests.swift */,
 			);
 			path = CoreDataTests;
 			sourceTree = "<group>";
@@ -413,6 +418,7 @@
 			isa = PBXGroup;
 			children = (
 				B4F06DF0215D843100F7EEB0 /* PostDetailViewControllerTests.swift */,
+				B48B8180216E35A800BF6640 /* PostListDataSourceTests.swift */,
 			);
 			path = ControllerTests;
 			sourceTree = "<group>";
@@ -624,6 +630,7 @@
 				B40352122146BAAA000DA66D /* PostsClientTests.swift in Sources */,
 				B4E2766E2165239D009A7765 /* UsersClientTests.swift in Sources */,
 				B4D642B421441CCF005A587F /* ModelStubs.swift in Sources */,
+				B48B8183216E371100BF6640 /* PostStorageManagerTests.swift in Sources */,
 				B403520C21467530000DA66D /* CodableCommentTests.swift in Sources */,
 				B4F06DF1215D843100F7EEB0 /* PostDetailViewControllerTests.swift in Sources */,
 				B42F5777215C4E050075442C /* PostCellViewModelTests.swift in Sources */,
@@ -634,6 +641,7 @@
 				B42F5772215C3BC20075442C /* PostDetailViewTests.swift in Sources */,
 				B4AFCB812160F96400EF6A0C /* ClientTests.swift in Sources */,
 				B40352142146BE3A000DA66D /* PostsEndpointsTests.swift in Sources */,
+				B48B8181216E35A800BF6640 /* PostListDataSourceTests.swift in Sources */,
 				B40E46B021695EEA003CCE90 /* CDPostTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

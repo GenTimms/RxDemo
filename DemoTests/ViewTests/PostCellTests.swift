@@ -20,6 +20,7 @@ class PostCellTests: XCTestCase {
         
         controller.client = nil
         //controller.loadViewIfNeeded()
+        controller.storageManager = PostStorageManager(container: CoreDataTestStack().mockPersistentContainer)
        
         let tableView = controller.tableView
         let dataSource = FakeDataSource()

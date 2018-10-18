@@ -15,7 +15,11 @@ extension UIViewController {
             if let navCon = self as? UINavigationController {
                 return navCon.visibleViewController ?? self
             } else {
-                return self
+                if let splitView = self as? UISplitViewController {
+                    return splitView.viewControllers[0].contents
+                } else {
+                    return self
+                }
             }
         }
     }

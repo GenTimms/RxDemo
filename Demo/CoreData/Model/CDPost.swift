@@ -11,8 +11,8 @@ import CoreData
 class CDPost: NSManagedObject {
     
     func asPost() -> Post {
-        let modelComments = comments!.map{($0 as! CDComment).asComment()}
-        let modelUser = user!.asUser()
+        let modelComments = comments?.map{($0 as! CDComment).asComment()}
+        let modelUser = user?.asUser()
         
         return Post(id: id, userId: userId, title: title!, body: body!, user: modelUser, comments: modelComments)
     }
