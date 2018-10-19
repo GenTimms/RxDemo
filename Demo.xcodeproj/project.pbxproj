@@ -32,6 +32,7 @@
 		B42F5770215C3AF80075442C /* PostCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42F576F215C3AF80075442C /* PostCellTests.swift */; };
 		B42F5772215C3BC20075442C /* PostDetailViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42F5771215C3BC20075442C /* PostDetailViewTests.swift */; };
 		B42F5777215C4E050075442C /* PostCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42F5776215C4E050075442C /* PostCellViewModelTests.swift */; };
+		B475A61F2178FAE90090CE20 /* PostListTableViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B475A61E2178FAE90090CE20 /* PostListTableViewControllerTests.swift */; };
 		B476911F21427D15003CABF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B476911E21427D15003CABF2 /* AppDelegate.swift */; };
 		B476912421427D15003CABF2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B476912221427D15003CABF2 /* Main.storyboard */; };
 		B476912921427D18003CABF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B476912821427D18003CABF2 /* Assets.xcassets */; };
@@ -120,6 +121,7 @@
 		B42F576F215C3AF80075442C /* PostCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCellTests.swift; sourceTree = "<group>"; };
 		B42F5771215C3BC20075442C /* PostDetailViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewTests.swift; sourceTree = "<group>"; };
 		B42F5776215C4E050075442C /* PostCellViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCellViewModelTests.swift; sourceTree = "<group>"; };
+		B475A61E2178FAE90090CE20 /* PostListTableViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListTableViewControllerTests.swift; sourceTree = "<group>"; };
 		B476911B21427D15003CABF2 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B476911E21427D15003CABF2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B476912321427D15003CABF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -419,6 +421,7 @@
 			children = (
 				B4F06DF0215D843100F7EEB0 /* PostDetailViewControllerTests.swift */,
 				B48B8180216E35A800BF6640 /* PostListDataSourceTests.swift */,
+				B475A61E2178FAE90090CE20 /* PostListTableViewControllerTests.swift */,
 			);
 			path = ControllerTests;
 			sourceTree = "<group>";
@@ -633,6 +636,7 @@
 				B48B8183216E371100BF6640 /* PostStorageManagerTests.swift in Sources */,
 				B403520C21467530000DA66D /* CodableCommentTests.swift in Sources */,
 				B4F06DF1215D843100F7EEB0 /* PostDetailViewControllerTests.swift in Sources */,
+				B475A61F2178FAE90090CE20 /* PostListTableViewControllerTests.swift in Sources */,
 				B42F5777215C4E050075442C /* PostCellViewModelTests.swift in Sources */,
 				B403520A21467518000DA66D /* CodableUserTests.swift in Sources */,
 				B40E46B321695EEA003CCE90 /* CDUserTests.swift in Sources */,

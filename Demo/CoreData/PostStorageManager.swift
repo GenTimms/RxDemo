@@ -44,7 +44,6 @@ class PostStorageManager {
         }
     }
     
-    //should this be here? //don't want table view knowing about CDPost!
     func createFetchedResultsController() -> NSFetchedResultsController<CDPost> {
         let request: NSFetchRequest<CDPost> = CDPost.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]

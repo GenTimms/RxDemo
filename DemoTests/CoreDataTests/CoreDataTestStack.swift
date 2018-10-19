@@ -11,9 +11,9 @@ import CoreData
 @testable import Demo
 
 class CoreDataTestStack {
-
-   static var managedObjectModel = NSManagedObjectModel.mergedModel(from: [Bundle(for: CoreDataTestStack.self)] )!
-  
+    
+    static var managedObjectModel = NSManagedObjectModel.mergedModel(from: [Bundle(for: CoreDataTestStack.self)] )!
+    
     lazy var mockPersistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "Posts", managedObjectModel: CoreDataTestStack.managedObjectModel)
         let description = container.persistentStoreDescriptions.first
@@ -62,7 +62,7 @@ class MockManagedObjectContext: NSManagedObjectContext {
         if saveThrows {
             throw testError
         }
-       
+        
         try super.save()
         saveWasCalled = true
     }
@@ -99,20 +99,22 @@ extension CoreDataTestStack {
             var postObjects = [NSManagedObject]()
             
             for post in posts {
-            let postObject = NSEntityDescription.insertNewObject(forEntityName: "Post", into: mockPersistentContainer.viewContext)
-            
-            postObject.setValue(post.id, forKey: "id")
-            postObject.setValue(post.title, forKey: "title")
-            postObject.setValue(post.body, forKey: "body")
-            postObject.setValue(insertUser(post.user!), forKey: "user")
-            postObject.setValue(NSSet(array: insertComments(post.comments)), forKey: "Comments")
-            postObjects.append(postObject)
+                let postObject = NSEntityDescription.insertNewObject(forEntityName: "Post", into: mockPersistentContainer.viewContext)
+                
+                postObject.setValue(post.id, forKey: "id")
+                postObject.setValue(post.title, forKey: "title")
+                postObject.setValue(post.body, forKey: "body")
+                if let user = post.user {
+                    postObject.setValue(insertUser(user), forKey: "user")
+                }
+                postObject.setValue(NSSet(array: insertComments(post.comments)), forKey: "Comments")
+                postObjects.append(postObject)
             }
             return postObjects
         }
         
         _ = insertPosts(ModelStubs.posts)
-
+        
         do {
             try mockPersistentContainer.viewContext.save()
         } catch {

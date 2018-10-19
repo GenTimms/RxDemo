@@ -23,7 +23,7 @@ struct ModelStubs {
         return comments
     }()
     
-    static let users = [User(id: 1, name: "Rich Sanchez"),
+    static let users = [User(id: 1, name: "Rick Sanchez"),
                         User(id: 2, name: "Nicholas Rush"),
                         User(id: 3, name: "Leo Fitz"),
                         User(id: 4, name: "Troy Barnes")]
