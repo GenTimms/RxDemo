@@ -16,34 +16,6 @@ class PostsClientTests: XCTestCase {
     var commentsClient: CommentsClient!
     var usersClient: UsersClient!
     
-    
-    let response =  HTTPURLResponse(url: URL(string: "http://jsonplaceholder.typicode.com")!, statusCode: 200, httpVersion: nil, headerFields: nil)
-    
-    //MARK: - Mock Data To Return
-    let postData: Data! = {
-        if let path = Bundle.main.path(forResource: "posts", ofType: "json") {
-            let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-            return data
-        }
-        return nil
-    }()
-    
-    let commentData: Data! = {
-        if let path = Bundle.main.path(forResource: "comments", ofType: "json") {
-            let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-            return data
-        }
-        return nil
-    }()
-    
-    let userData: Data! = {
-        if let path = Bundle.main.path(forResource: "users", ofType: "json") {
-            let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-            return data
-        }
-        return nil
-    }()
-    
     override func setUp() {
         super.setUp()
         
@@ -51,9 +23,9 @@ class PostsClientTests: XCTestCase {
         commentsClient = CommentsClient()
         usersClient = UsersClient()
         
-        sut.session = MockURLSession(data: postData, urlResponse: response, error: nil)
-        commentsClient.session = MockURLSession(data: commentData, urlResponse: response, error: nil)
-        usersClient.session = MockURLSession(data: userData, urlResponse: response, error: nil)
+        sut.session = MockURLSession(data: ClientData.postData, urlResponse: ClientData.response, error: nil)
+        commentsClient.session = MockURLSession(data: ClientData.commentData, urlResponse: ClientData.response, error: nil)
+        usersClient.session = MockURLSession(data: ClientData.userData, urlResponse: ClientData.response, error: nil)
         
         sut.commentsClient = commentsClient
         sut.usersClient = usersClient

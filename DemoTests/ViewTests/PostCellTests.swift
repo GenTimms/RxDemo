@@ -19,12 +19,10 @@ class PostCellTests: XCTestCase {
         let controller = storyboard.instantiateViewController(withIdentifier: "PostListViewController") as! PostListTableViewController
         
         controller.client = nil
-        //controller.loadViewIfNeeded()
         controller.storageManager = PostStorageManager(container: CoreDataTestStack().mockPersistentContainer)
        
         let tableView = controller.tableView
         let dataSource = FakeDataSource()
-         controller.dataSource = nil
         tableView?.dataSource = dataSource
         
         cell = tableView?.dequeueReusableCell(withIdentifier: "Post Cell", for: IndexPath(row: 0, section: 0)) as! PostCell

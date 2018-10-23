@@ -19,10 +19,10 @@ class PostListDataSourceTests: XCTestCase {
     var sut: PostListDataSource!
     
     var tableView: UITableView!
-
+    
     override func setUp() {
         coreDataStack = CoreDataTestStack()
-    
+        
         fetchedResultsController = createFetchedResultsController()
         sut = PostListDataSource(fetchedResultsController: fetchedResultsController)
         
@@ -33,7 +33,7 @@ class PostListDataSourceTests: XCTestCase {
         let request: NSFetchRequest<CDPost> = CDPost.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
         
-       return NSFetchedResultsController(
+        return NSFetchedResultsController(
             fetchRequest: request,
             managedObjectContext: coreDataStack.mainContext,
             sectionNameKeyPath: nil,
@@ -70,7 +70,7 @@ class PostListDataSourceTests: XCTestCase {
     override func tearDown() {
         super.tearDown()
     }
-
+    
     func testNumberOfSections_IsOne() {
         addAndFetchPosts()
         XCTAssertEqual(tableView.numberOfSections, 1)
@@ -108,18 +108,20 @@ class PostListDataSourceTests: XCTestCase {
         tableView.reloadData()
         
         if let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? MockPostCell {
-              XCTAssertEqual(cell.catchedTitle, ModelStubs.posts[0].title)
+            XCTAssertEqual(cell.catchedTitle, ModelStubs.posts[0].title)
         } else {
             XCTFail("Can't get MockPostCell")
         }
     }
-    
+}
+
+extension PostListDataSourceTests {
     class MockTableView: UITableView {
         var dequeueWasCalled = false
         override func dequeueReusableCell(withIdentifier identifier: String,
                                           for indexPath: IndexPath) -> UITableViewCell {
-           dequeueWasCalled = true
-           return super.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
+            dequeueWasCalled = true
+            return super.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
         }
     }
     

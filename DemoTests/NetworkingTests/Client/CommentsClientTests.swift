@@ -15,20 +15,11 @@ class CommentsClientTests: XCTestCase {
     var commentsClient: CommentsClient!
     
     let commentsGroup = DispatchGroup()
-    
-    let response =  HTTPURLResponse(url: URL(string: "http://jsonplaceholder.typicode.com")!, statusCode: 200, httpVersion: nil, headerFields: nil)
-    
-    let commentData: Data! = {
-        if let path = Bundle.main.path(forResource: "comments", ofType: "json") {
-            let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-            return data
-        }
-        return nil
-    }()
+ 
     
     override func setUp() {
         super.setUp()
-        mockURLSession = MockURLSession(data: commentData, urlResponse: response, error: nil)
+        mockURLSession = MockURLSession(data: ClientData.commentData, urlResponse: ClientData.response, error: nil)
         commentsClient = CommentsClient()
         commentsClient.session = mockURLSession
     }

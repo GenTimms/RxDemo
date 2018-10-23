@@ -76,9 +76,7 @@ class ClientTests: XCTestCase {
     //Data Task Returns Error
     func testFetchRequest_WithDataTaskError_ReturnsError() {
         
-        let error = NSError(domain: "SomeError", code: 1234, userInfo: nil)
-        
-        mockURLSession = MockURLSession(data: jsonData, urlResponse: response, error: error)
+        mockURLSession = MockURLSession(data: jsonData, urlResponse: response, error: ClientData.error)
         client.session = mockURLSession
         
         var caughtError: Error? = nil
@@ -97,7 +95,7 @@ class ClientTests: XCTestCase {
                 return
             }
             switch requestError {
-            case .errorReturned(let returnedError): XCTAssertEqual(returnedError as NSError, error)
+            case .errorReturned(let returnedError): XCTAssertEqual(returnedError as NSError, ClientData.error)
             default: XCTFail("Incorrect requestError returned \(requestError)")
             }
         }

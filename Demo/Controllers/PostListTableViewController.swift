@@ -12,10 +12,8 @@ import CoreData
 class PostListTableViewController: UITableViewController, UISplitViewControllerDelegate {
     
     var client: PostsClient?
-    var storageManager: PostStorageManager? 
-    
-    var dataSource: PostListDataSource?
-    lazy var fetchedResultsController = storageManager?.createFetchedResultsController()
+    var storageManager: PostStorageManager?
+    var dataProvider: PostDataProvider?
     
     //MARK: - ViewDidLoad
     override func viewDidLoad() {
@@ -31,11 +29,16 @@ class PostListTableViewController: UITableViewController, UISplitViewControllerD
     
     //MARK: - Fetching
     func initiateFetch() {
-        if client != nil && storageManager != nil {
-            dataSource = PostListDataSource(fetchedResultsController: fetchedResultsController!)
-            tableView.dataSource = dataSource
-            fetchPosts()
+        guard let _ = client, let storageManager = storageManager else {
+            return
         }
+        
+        if dataProvider == nil {
+            dataProvider = PostDataProvider(storageManager: storageManager)
+        }
+        
+        tableView.dataSource = dataProvider?.dataSource
+        fetchPosts()
     }
     
     private func fetchPosts() {
@@ -47,6 +50,7 @@ class PostListTableViewController: UITableViewController, UISplitViewControllerD
                     }
                 case.failure(let error):
                     self.displayErrorNotification(description: "Network Fetch Error", error: error)
+                    return
                 }
                 self.updateUI()
             }
@@ -54,10 +58,12 @@ class PostListTableViewController: UITableViewController, UISplitViewControllerD
     }
     
     private func updateUI()  {
-        do { try fetchedResultsController?.performFetch()
+        dataProvider?.fetchData { error in
+            if let error = error {
+                displayErrorNotification(description: "Data Provider Fetch Error", error: error)
+                return
+            }
             tableView.reloadData()
-        } catch {
-            displayErrorNotification(description: "Database Fetch Error", error: CoreDataError.fetchRequestFailed)
         }
     }
     
@@ -79,7 +85,7 @@ class PostListTableViewController: UITableViewController, UISplitViewControllerD
         if segue.identifier == Segues.detailSegue {
             if let postDetailVC = segue.destination.contents as? PostDetailViewController {
                 if let indexPath = sender as? IndexPath {
-                    postDetailVC.post = fetchedResultsController?.object(at: indexPath).asPost() //get from data source?
+                    postDetailVC.post = dataProvider?.objectAt(indexPath: indexPath)
                     collapseDetailViewController = false
                 }
             }

@@ -15,20 +15,11 @@ class UsersClientTests: XCTestCase {
     var mockURLSession: MockURLSession!
     
     let userGroup = DispatchGroup()
-        let response =  HTTPURLResponse(url: URL(string: "http://jsonplaceholder.typicode.com")!, statusCode: 200, httpVersion: nil, headerFields: nil)
-    
-    let userData: Data! = {
-        if let path = Bundle.main.path(forResource: "users", ofType: "json") {
-            let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-            return data
-        }
-        return nil
-    }()
-    
+
     override func setUp() {
         super.setUp()
         usersClient = UsersClient()
-        mockURLSession = MockURLSession(data: userData, urlResponse: response, error: nil)
+        mockURLSession = MockURLSession(data: ClientData.userData, urlResponse: ClientData.response, error: nil)
         usersClient.session = mockURLSession
     }
     
