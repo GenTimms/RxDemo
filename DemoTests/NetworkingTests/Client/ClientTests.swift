@@ -40,7 +40,7 @@ class ClientTests: XCTestCase {
         var parsedData: String? = nil
         let resultExpectation = expectation(description: "Result")
         
-        client.fetchRequest(request, parse: {$0.getJSONValue(for: "name")}) { result in
+        client.fetchRequest(request, parse: { try $0.getJSONValue(for: "name")}) { result in
             switch result {
             case .failure(let error): XCTFail("Fetch Users Failed. Error: \(error)")
             case .success(let result): parsedData = result; resultExpectation.fulfill()
@@ -52,21 +52,21 @@ class ClientTests: XCTestCase {
         }
     }
     
-    //MARK: - Parse Error Return
-    func testFetchRequest_WithInvalidParse_ReturnsParseFailedError() {
+    //MARK: - Failed Parse Throws Error
+    func testFetchRequest_WithThrowingParse_ReturnsParseFailedError() {
         mockURLSession = MockURLSession(data: jsonData, urlResponse: response, error: nil)
         client.session = mockURLSession
         
         var caughtError: Error? = nil
         let resultExpectation = expectation(description: "Result")
         
-        client.fetchRequest(request, parse: {$0.getJSONValue(for: "invalidKey")}) { result in
+        
+        client.fetchRequest(request, parse: { try $0.getJSONValue(for: "invalidKey")}) { result in
             switch result {
             case .failure(let error): caughtError = error; resultExpectation.fulfill()
             case .success(let result): XCTFail("Fetch Users Succeeded. Result: \(result)")
             }
         }
-        
         waitForExpectations(timeout: 1) { _ in
             XCTAssertEqual(caughtError as? JSONError, JSONError.parseFailed)
         }
@@ -82,7 +82,7 @@ class ClientTests: XCTestCase {
         var caughtError: Error? = nil
         let resultExpectation = expectation(description: "Result")
         
-        client.fetchRequest(request, parse: {$0.getJSONValue(for: "name")}) { result in
+        client.fetchRequest(request, parse: { try $0.getJSONValue(for: "name")}) { result in
             switch result {
             case .failure(let error): caughtError = error; resultExpectation.fulfill()
             case .success(let result): XCTFail("Fetch Users Succeeded. Result: \(result)")
@@ -110,7 +110,7 @@ class ClientTests: XCTestCase {
         var caughtError: Error? = nil
         let resultExpectation = expectation(description: "Result")
         
-        client.fetchRequest(request, parse: {$0.getJSONValue(for: "name")}) { result in
+        client.fetchRequest(request, parse: { try $0.getJSONValue(for: "name")}) { result in
             switch result {
             case .failure(let error): caughtError = error; resultExpectation.fulfill()
             case .success(let result): XCTFail("Fetch Users Succeeded. Result: \(result)")
@@ -140,7 +140,7 @@ class ClientTests: XCTestCase {
         var caughtError: Error? = nil
         let resultExpectation = expectation(description: "Result")
         
-        client.fetchRequest(request, parse: {$0.getJSONValue(for: "name")}) { result in
+        client.fetchRequest(request, parse: { try $0.getJSONValue(for: "name")}) { result in
             switch result {
             case .failure(let error): caughtError = error; resultExpectation.fulfill()
             case .success(let result): XCTFail("Fetch Users Succeeded. Result: \(result)")
@@ -169,7 +169,7 @@ class ClientTests: XCTestCase {
         var caughtError: Error? = nil
         let resultExpectation = expectation(description: "Result")
         
-        client.fetchRequest(request, parse: {$0.getJSONValue(for: "name")}) { result in
+        client.fetchRequest(request, parse: { try $0.getJSONValue(for: "name")}) { result in
             switch result {
             case .failure(let error): caughtError = error; resultExpectation.fulfill()
             case .success(let result): XCTFail("Fetch Users Succeeded. Result: \(result)")

@@ -10,9 +10,6 @@
 		B40351EF214599EB000DA66D /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40351EE214599EB000DA66D /* PostDetailViewController.swift */; };
 		B40351F22145B43F000DA66D /* IndieFlower.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B40351F12145B43F000DA66D /* IndieFlower.ttf */; };
 		B40351F42145D1D6000DA66D /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40351F32145D1D6000DA66D /* Endpoint.swift */; };
-		B40351F821465554000DA66D /* CodablePost.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40351F721465554000DA66D /* CodablePost.swift */; };
-		B40351FB21465560000DA66D /* CodableComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40351FA21465560000DA66D /* CodableComment.swift */; };
-		B40351FE2146556A000DA66D /* CodableUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40351FD2146556A000DA66D /* CodableUser.swift */; };
 		B4035208214674EE000DA66D /* CodablePostTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4035207214674EE000DA66D /* CodablePostTests.swift */; };
 		B403520A21467518000DA66D /* CodableUserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B403520921467518000DA66D /* CodableUserTests.swift */; };
 		B403520C21467530000DA66D /* CodableCommentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B403520B21467530000DA66D /* CodableCommentTests.swift */; };
@@ -99,9 +96,6 @@
 		B40351EE214599EB000DA66D /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
 		B40351F12145B43F000DA66D /* IndieFlower.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = IndieFlower.ttf; sourceTree = "<group>"; };
 		B40351F32145D1D6000DA66D /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
-		B40351F721465554000DA66D /* CodablePost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodablePost.swift; sourceTree = "<group>"; };
-		B40351FA21465560000DA66D /* CodableComment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableComment.swift; sourceTree = "<group>"; };
-		B40351FD2146556A000DA66D /* CodableUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableUser.swift; sourceTree = "<group>"; };
 		B40352012146748B000DA66D /* comments.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = comments.json; sourceTree = "<group>"; };
 		B40352022146748C000DA66D /* users.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = users.json; sourceTree = "<group>"; };
 		B40352032146748C000DA66D /* posts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = posts.json; path = "DemoTests/NetworkingTests/JSON Files/posts.json"; sourceTree = SOURCE_ROOT; };
@@ -194,16 +188,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B40351F6214654FE000DA66D /* Codable */ = {
-			isa = PBXGroup;
-			children = (
-				B40351FD2146556A000DA66D /* CodableUser.swift */,
-				B40351F721465554000DA66D /* CodablePost.swift */,
-				B40351FA21465560000DA66D /* CodableComment.swift */,
-			);
-			path = Codable;
-			sourceTree = "<group>";
-		};
 		B403520021465A5F000DA66D /* NetworkingTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -334,7 +318,6 @@
 				B40E46A921695EEA003CCE90 /* CoreDataTests */,
 				B42F576E215C39650075442C /* ViewTests */,
 				B4F06DEF215D83F600F7EEB0 /* ControllerTests */,
-				B4F962032153E8F4009C166C /* ModelTests */,
 				B403520021465A5F000DA66D /* NetworkingTests */,
 				B476913821427D18003CABF2 /* Info.plist */,
 			);
@@ -354,7 +337,6 @@
 		B476915021427DD9003CABF2 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				B40351F6214654FE000DA66D /* Codable */,
 				B4A00493214549B4005F2ADD /* Clients */,
 				B4A00492214549A5005F2ADD /* Protocols */,
 				B4A0049121454978005F2ADD /* Enums */,
@@ -448,13 +430,6 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		B4F962032153E8F4009C166C /* ModelTests */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ModelTests;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -530,7 +505,6 @@
 					};
 					B476913C21427D18003CABF2 = {
 						CreatedOnToolsVersion = 9.4.1;
-						TestTargetID = B476911A21427D15003CABF2;
 					};
 				};
 			};
@@ -599,11 +573,9 @@
 				B47691602142B840003CABF2 /* CDUser.swift in Sources */,
 				B4A0048521453352005F2ADD /* PostsEndpoints.swift in Sources */,
 				B476915621429DDF003CABF2 /* Comment.swift in Sources */,
-				B40351F821465554000DA66D /* CodablePost.swift in Sources */,
 				B4D642A32143CBCD005A587F /* Utilities.swift in Sources */,
 				B4A0048C2145488F005F2ADD /* Result.swift in Sources */,
 				B4A0049521454A12005F2ADD /* PostsClient.swift in Sources */,
-				B40351FE2146556A000DA66D /* CodableUser.swift in Sources */,
 				B4DE8C8E21457D74006FDF66 /* PostCellViewModel.swift in Sources */,
 				B4C6B721217CD9BE004AEC57 /* PostDataProvider.swift in Sources */,
 				B476915821429DEF003CABF2 /* User.swift in Sources */,
@@ -614,7 +586,6 @@
 				B40351F42145D1D6000DA66D /* Endpoint.swift in Sources */,
 				B4A0048921454826005F2ADD /* Client.swift in Sources */,
 				B40E46A721695DE2003CCE90 /* CDComment+CoreDataProperties.swift in Sources */,
-				B40351FB21465560000DA66D /* CodableComment.swift in Sources */,
 				B476915C2142B7FB003CABF2 /* CDPost.swift in Sources */,
 				B4DE8C8B21457D58006FDF66 /* PostCell.swift in Sources */,
 				B4F2CF242142E17900C56ED0 /* CoreDataErrors.swift in Sources */,
@@ -910,9 +881,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.gmjt.BabylonDemoUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Demo;
 			};
 			name = Debug;
 		};
@@ -930,9 +901,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.gmjt.BabylonDemoUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Demo;
 			};
 			name = Release;
 		};

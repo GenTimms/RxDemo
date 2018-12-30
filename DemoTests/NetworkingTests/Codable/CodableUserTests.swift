@@ -38,10 +38,24 @@ class CodableUserTests: XCTestCase {
     }
     
     func testCreateUsers_CreatesUsers() {
-        guard let users = User.createUsers(from: data) else {
-            XCTFail("User.createUsers Failed")
+        guard let users = try? data.createArray(ofType: User.self) else {
+            XCTFail("data.createArray(ofType: User.self) Failed")
             return
         }
         XCTAssert(!users.isEmpty)
+    }
+    
+    func testCreateUsers_throwsError() {
+        
+        var caughtError: Error? = nil
+        
+        do {
+            _ = try Data().createArray(ofType: User.self)
+        } catch {
+            caughtError = error
+        }
+        
+        XCTAssertNotNil(caughtError)
+        print(caughtError.debugDescription)
     }
 }

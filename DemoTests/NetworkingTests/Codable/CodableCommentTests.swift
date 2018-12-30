@@ -29,7 +29,7 @@ class CodableCommentTests: XCTestCase {
         }
     }
     
-    func testJSONDecoder_CreatesUsers() {
+    func testJSONDecoder_CreatesComments() {
         var users = [Comment]()
         do {
             users =  try JSONDecoder().decode([Comment].self, from: data)
@@ -39,11 +39,25 @@ class CodableCommentTests: XCTestCase {
         XCTAssert(!users.isEmpty)
     }
     
-    func testCreateUsers_CreatesUsers() {
-        guard let users = Comment.createComments(from: data) else {
-            XCTFail("User.createComments Failed")
+    func testCreateComments_CreatesComments() {
+        guard let comments = try? data.createArray(ofType: Comment.self) else {
+            XCTFail("data.createArray(ofType: Comment.self) Failed")
             return
         }
-        XCTAssert(!users.isEmpty)
+        XCTAssert(!comments.isEmpty)
+    }
+    
+    func testCreateComments_throwsError() {
+        
+        var caughtError: Error? = nil
+        
+        do {
+            _ = try Data().createArray(ofType: Comment.self)
+        } catch {
+            caughtError = error
+        }
+        
+        XCTAssertNotNil(caughtError)
+        print(caughtError.debugDescription)
     }
 }

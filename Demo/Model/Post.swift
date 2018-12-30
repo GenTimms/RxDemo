@@ -25,4 +25,12 @@ class Post: Codable {
         self.user = user
         self.comments = comments ?? [Comment]()
     }
-}
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case userId
+        case title
+        case body
+    }
+}     
+

@@ -20,8 +20,8 @@ class CommentsClient: Client {
             return
         }
         
-        fetchRequest(request, parse: { (data) -> [Comment]? in
-            return Comment.createComments(from: data) ?? nil
+        fetchRequest(request, parse: { (data) throws -> [Comment] in
+            return try data.createArray(ofType: Comment.self)
         }, completion: { result in
             completion(result)
             group?.leave()

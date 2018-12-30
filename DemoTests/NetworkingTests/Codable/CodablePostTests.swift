@@ -37,11 +37,24 @@ class CodablePostTests: XCTestCase {
         XCTAssert(!users.isEmpty)
     }
     
-    func testCreateUsers_CreatesUsers() {
-        guard let users = Post.createPosts(from: data) else {
-            XCTFail("User.createComments Failed")
+    func testCreatePosts_CreatesPosts() {
+        guard let posts = try? data.createArray(ofType: Post.self) else {
+            XCTFail("data.createArrayofType: Post.Self Failed")
             return
         }
-        XCTAssert(!users.isEmpty)
+        XCTAssert(!posts.isEmpty)
     }
-}
+    
+    func testCreatePosts_throwsError() {
+        
+        var caughtError: Error? = nil
+        
+        do {
+            _ = try Data().createArray(ofType: Post.self)
+        } catch {
+            caughtError = error
+        }
+        
+        XCTAssertNotNil(caughtError)
+        print(caughtError.debugDescription)
+    }}

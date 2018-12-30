@@ -30,6 +30,7 @@ class PostsClient: Client {
         postsGroup.notify(queue: DispatchQueue.main) {
             guard self.errors.isEmpty else {
                 completion(Result.failure(self.errors.first!))
+                group?.leave()
                 return
             }
             
@@ -86,8 +87,8 @@ class PostsClient: Client {
             return
         }
         
-        fetchRequest(request, parse: { (data) -> [Post]? in
-           return Post.createPosts(from: data) ?? nil
+        fetchRequest(request, parse: { (data) throws -> [Post] in
+            return try data.createArray(ofType: Post.self)
         }, completion: { result in
             completion(result)
             group?.leave()

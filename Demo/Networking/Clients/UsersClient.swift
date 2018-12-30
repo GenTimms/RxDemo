@@ -23,8 +23,8 @@ class UsersClient: Client {
             return
         }
         
-        fetchRequest(request, parse: { (data) -> [User]? in
-            return User.createUsers(from: data) ?? nil
+        fetchRequest(request, parse: { (data) throws -> [User] in
+            return try data.createArray(ofType: User.self)
         }, completion: { result in
             completion(result)
             group?.leave()
