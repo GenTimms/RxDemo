@@ -75,6 +75,9 @@
 		B4F06DEE215D28EE00F7EEB0 /* users.json in Resources */ = {isa = PBXBuildFile; fileRef = B40352022146748C000DA66D /* users.json */; };
 		B4F06DF1215D843100F7EEB0 /* PostDetailViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F06DF0215D843100F7EEB0 /* PostDetailViewControllerTests.swift */; };
 		B4F2CF242142E17900C56ED0 /* CoreDataErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F2CF232142E17900C56ED0 /* CoreDataErrors.swift */; };
+		B4FBC9DC21DC29CF00329642 /* RxPostsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FBC9DB21DC29CF00329642 /* RxPostsClient.swift */; };
+		B4FBC9DE21DC2A5C00329642 /* RxPostClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FBC9DD21DC2A5C00329642 /* RxPostClientTests.swift */; };
+		B4FBC9E021DC2B3600329642 /* RxClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FBC9DF21DC2B3600329642 /* RxClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -169,6 +172,9 @@
 		B4F06DBE215D02E200F7EEB0 /* PostDetailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewModelTests.swift; sourceTree = "<group>"; };
 		B4F06DF0215D843100F7EEB0 /* PostDetailViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewControllerTests.swift; sourceTree = "<group>"; };
 		B4F2CF232142E17900C56ED0 /* CoreDataErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataErrors.swift; sourceTree = "<group>"; };
+		B4FBC9DB21DC29CF00329642 /* RxPostsClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxPostsClient.swift; sourceTree = "<group>"; };
+		B4FBC9DD21DC2A5C00329642 /* RxPostClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxPostClientTests.swift; sourceTree = "<group>"; };
+		B4FBC9DF21DC2B3600329642 /* RxClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -248,6 +254,7 @@
 				B4E2766D2165239D009A7765 /* UsersClientTests.swift */,
 				B40E469A2169182A003CCE90 /* CommentsClientTests.swift */,
 				B4C6B71E217A62CC004AEC57 /* ClientData.swift */,
+				B4FBC9DD21DC2A5C00329642 /* RxPostClientTests.swift */,
 			);
 			path = Client;
 			sourceTree = "<group>";
@@ -413,6 +420,7 @@
 			children = (
 				B4A0048821454826005F2ADD /* Client.swift */,
 				B40351F32145D1D6000DA66D /* Endpoint.swift */,
+				B4FBC9DF21DC2B3600329642 /* RxClient.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -423,6 +431,7 @@
 				B4A0049421454A12005F2ADD /* PostsClient.swift */,
 				B494515521579F1500B0374A /* CommentsClient.swift */,
 				B494515821579F2000B0374A /* UsersClient.swift */,
+				B4FBC9DB21DC29CF00329642 /* RxPostsClient.swift */,
 			);
 			path = Clients;
 			sourceTree = "<group>";
@@ -720,6 +729,8 @@
 				B4DE8C912145835E006FDF66 /* PostStorageManager.swift in Sources */,
 				B403522521472A62000DA66D /* PostDetailView.swift in Sources */,
 				B4D642A12143C7C7005A587F /* PostListTableViewController.swift in Sources */,
+				B4FBC9E021DC2B3600329642 /* RxClient.swift in Sources */,
+				B4FBC9DC21DC29CF00329642 /* RxPostsClient.swift in Sources */,
 				B40351F42145D1D6000DA66D /* Endpoint.swift in Sources */,
 				B4A0048921454826005F2ADD /* Client.swift in Sources */,
 				B40E46A721695DE2003CCE90 /* CDComment+CoreDataProperties.swift in Sources */,
@@ -748,6 +759,7 @@
 				B40E46B421696330003CCE90 /* Posts.xcdatamodeld in Sources */,
 				B4F06DBF215D02E200F7EEB0 /* PostDetailViewModelTests.swift in Sources */,
 				B40E469B2169182A003CCE90 /* CommentsClientTests.swift in Sources */,
+				B4FBC9DE21DC2A5C00329642 /* RxPostClientTests.swift in Sources */,
 				B40352122146BAAA000DA66D /* PostsClientTests.swift in Sources */,
 				B4E2766E2165239D009A7765 /* UsersClientTests.swift in Sources */,
 				B4D642B421441CCF005A587F /* ModelStubs.swift in Sources */,

@@ -38,4 +38,6 @@ struct ClientData {
         return nil
     }()
     
+    static let fakeData = "{\"name\": \"Genevieve Timms\"}".data(using: .utf8)
+    
 }
