@@ -11,7 +11,7 @@ import CoreData
 
 class PostListTableViewController: UITableViewController, UISplitViewControllerDelegate {
     
-    var client: PostsClient?
+    var client: RxPostsClient?
     var storageManager: PostStorageManager?
     var dataProvider: PostDataProvider?
     

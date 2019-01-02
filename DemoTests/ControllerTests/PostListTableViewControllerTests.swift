@@ -160,7 +160,7 @@ extension PostListTableViewControllerTests {
         }
     }
     
-    class MockPostsClient: PostsClient {
+    class MockPostsClient: RxPostsClient {
         var fetchCalled = false
         var success = true
         

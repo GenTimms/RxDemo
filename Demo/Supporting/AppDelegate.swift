@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if ProcessInfo.processInfo.environment["XCInjectBundleInto"] == nil {
             if let postListViewController = window?.rootViewController?.contents as? PostListTableViewController {
                 postListViewController.storageManager = PostStorageManager()
-                postListViewController.client = PostsClient()
+                postListViewController.client = RxPostsClient()
                 postListViewController.initiateFetch()
             }
         }

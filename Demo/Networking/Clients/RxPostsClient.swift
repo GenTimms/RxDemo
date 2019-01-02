@@ -28,7 +28,9 @@ class RxPostsClient: RxClient {
         
         Observable.zip(postsSingle.asObservable(), commentsSingle.asObservable(), usersSingle.asObservable()) { posts, comments, users in
             self.completePosts(posts: posts, users: users, comments: comments)
-            } .subscribe(onNext: {
+            }
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: {
                 completion(Result.success($0))
             }, onError: {
                 completion(Result.failure($0))
