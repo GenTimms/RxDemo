@@ -34,6 +34,7 @@ class PostStorageManager {
         self.init(container: appDelegate.persistentContainer)
     }
     
+    //return a completable sequence
     func insert(_ posts: [Post], completion: @escaping (Error?) -> Void) {
         backgroundContext.performAndWait  {
             _ = try? CDPost.findOrCreate(from: posts, in: backgroundContext)

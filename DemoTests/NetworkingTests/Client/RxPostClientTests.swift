@@ -27,64 +27,36 @@ class RxPostsClientTests: XCTestCase {
     
     //MARK: - Live Testing
     func xtestLiveFetch_FetchesCompletedPosts() {
-        let fetchExpectation = expectation(description: "Fetch Expectation")
+        
         var posts = [Post]()
+        var caughtError: Error? = nil
         
-        sut.fetch { result in
-            switch result {
-            case .success(let fetchedPosts): posts = fetchedPosts; fetchExpectation.fulfill()
-            case .failure(let error): XCTFail("Posts Fetch Failed: Error \(error.localizedDescription)")
-            print(error )
-            }
+        do {
+            posts = try sut.fetch().asObservable().toBlocking().single()
+        } catch {
+            caughtError = error
         }
         
-        waitForExpectations(timeout: 3) { _ in
-            XCTAssertEqual(posts.count, 100)
-            
-            let commentCounts = Set(posts.map{$0.comments.count})
-            let have5Comments = commentCounts.count == 1 ? commentCounts.first == 5 ? true : false : false
-            let haveUsers = posts.compactMap{$0.user}.count == 100
-            let areCompleted = have5Comments && haveUsers
-            XCTAssert(areCompleted)
-        }
+        XCTAssertNil(caughtError)
+        XCTAssertEqual(posts.count, 100)
+        let commentCounts = Set(posts.map{$0.comments.count})
+        let have5Comments = commentCounts.count == 1 ? commentCounts.first == 5 ? true : false : false
+        let haveUsers = posts.compactMap{$0.user}.count == 100
+        let areCompleted = have5Comments && haveUsers
+        XCTAssert(areCompleted)
     }
     
     func xtestLiveFetch_WithFakeURL_ReturnsError() {
-        let fetchExpectation = expectation(description: "FetchExpectation")
-        var caughtError: Error? = nil
         sut.postRequest = URLRequest(url: URL(string: "http://fakeURL.com")!)
-        sut.fetch { result in
-            switch result {
-            case .success(_): XCTFail("Fetch successed with fake request")
-            case .failure(let error): fetchExpectation.fulfill(); caughtError = error
-            }
-        }
-        
-        waitForExpectations(timeout: 3) { _ in
-            XCTAssertNotNil(caughtError)
-            print(caughtError)
-        }
+        XCTAssertThrowsError(try sut.fetch().asObservable().toBlocking().single())
     }
     
     func xtestLiveFetch_WithNilRequest_ReturnsError() {
-        let fetchExpectation = expectation(description: "FetchExpectation")
-        var caughtError: Error? = nil
         sut.postRequest = nil
-        sut.fetch { result in
-            switch result {
-            case .success(_): XCTFail("Fetch successed with fake request")
-            case .failure(let error): fetchExpectation.fulfill(); caughtError = error
-            }
-        }
-        
-        waitForExpectations(timeout: 3) { _ in
-            XCTAssertNotNil(caughtError)
-            print(caughtError)
-        }
+        XCTAssertThrowsError(try sut.fetch().asObservable().toBlocking().single())
     }
     
     //MARK: - Mock Testing
-    
     var postsSingle: PrimitiveSequence<SingleTrait, [Post]>!
     var commentsSingle: PrimitiveSequence<SingleTrait, [Comment]>!
     var usersSingle: PrimitiveSequence<SingleTrait, [User]>!
@@ -134,104 +106,82 @@ class RxPostsClientTests: XCTestCase {
     
     func testFetchReturnsCompletedPosts() {
         
+        let disposeBag = DisposeBag()
         createSingles()
         
-        let fetchExpectation = expectation(description: "Fetch Expectation")
         var posts = [Post]()
         
-        sut.fetch { result in
-            switch result {
-            case .success(let fetchedPosts): posts = fetchedPosts; fetchExpectation.fulfill()
-            case .failure(let error): XCTFail("Posts Fetch Failed: Error \(error.localizedDescription)")
-            print(error )
-            }
-        }
+        sut.fetch().asObservable()
+            .subscribe(onNext: { posts = $0 },
+                       onError: { XCTFail("Posts Fetch Failed: Error \($0.localizedDescription)")
+            })
+            .disposed(by: disposeBag)
         
         scheduler.start()
         
-        waitForExpectations(timeout: 3) { _ in
-            XCTAssertEqual(posts.count,100)
-            
-            let commentCounts = Set(posts.map{$0.comments.count})
-            let have5Comments = commentCounts.count == 1 ? commentCounts.first == 5 ? true : false : false
-            let haveUsers = posts.compactMap{$0.user}.count == 100
-            let areCompleted = have5Comments && haveUsers
-            XCTAssert(areCompleted)
-        }
+        XCTAssertEqual(posts.count,100)
+        
+        let commentCounts = Set(posts.map{$0.comments.count})
+        let have5Comments = commentCounts.count == 1 ? commentCounts.first == 5 ? true : false : false
+        let haveUsers = posts.compactMap{$0.user}.count == 100
+        let areCompleted = have5Comments && haveUsers
+        XCTAssert(areCompleted)
     }
     
     func testFetch_WithNilRequest_ReturnsError() {
         
+        let disposeBag = DisposeBag()
         sut.postRequest = nil
         
         createSingles()
-        
-        let fetchExpectation = expectation(description: "FetchExpectation")
         var caughtError: Error? = nil
         
-        sut.fetch { result in
-            switch result {
-            case .success(_): XCTFail("Fetch succeeded with fake request")
-            case .failure(let error): fetchExpectation.fulfill(); caughtError = error
-            }
-        }
+        sut.fetch().asObservable()
+            .subscribe(onNext: { XCTFail("Fetch succeeded with fake request, received next event: \($0)") },
+                       onError: { caughtError = $0 })
+            .disposed(by: disposeBag)
         
         scheduler.start()
-        
-        waitForExpectations(timeout: 3) { _ in
-            XCTAssertNotNil(caughtError)
-            print(caughtError)
-        }
+        XCTAssertNotNil(caughtError as? RequestError)
     }
     
     func testFetch_withNetworkError_ReturnsError() {
+        
+        let disposeBag = DisposeBag()
         
         userObservable = scheduler.createHotObservable([
             error(200, RequestError.invalidResponse)])
         
         createSingles()
         
-        let fetchExpectation = expectation(description: "FetchExpectation")
         var caughtError: Error? = nil
         
-        sut.fetch { result in
-            switch result {
-            case .success(_): XCTFail("Fetch succeeded with userErrorObservable")
-            case .failure(let error): fetchExpectation.fulfill(); caughtError = error
-            }
-        }
+        sut.fetch().asObservable()
+            .subscribe(onNext: { XCTFail("Fetch succeeded with userErrorObservable event: \($0)") },
+                       onError: { caughtError = $0 })
+            .disposed(by: disposeBag)
         
         _ = usersSingle.asObservable().subscribe{ print("UserSingle Event: \($0)") }
         
         scheduler.start()
-        
-        waitForExpectations(timeout: 3) { _ in
-            XCTAssertNotNil(caughtError)
-            print(caughtError)
-        }
+        XCTAssertNotNil(caughtError as? RequestError)
     }
     
     func testFetch_withFakeData_ReturnsDecodingError() {
+        let disposeBag = DisposeBag()
         commentObservable = scheduler.createHotObservable([next(300, ClientData.fakeData!)])
         
         createSingles()
         
-        let fetchExpectation = expectation(description: "Fetch Expectation")
         var caughtError: Error? = nil
         
-        sut.fetch {
-            switch $0 {
-            case .success: XCTFail("Fake data succeeded");
-            case .failure(let error): caughtError = error; fetchExpectation.fulfill()
-            }
-        }
+        sut.fetch().asObservable()
+            .subscribe(onNext: { XCTFail("Fake data succeeded, event: \($0)") },
+                       onError: { caughtError = $0 })
+            .disposed(by: disposeBag)
         
         scheduler.start()
-        
-        waitForExpectations(timeout: 3) { _ in
-            XCTAssertNotNil(caughtError)
-            XCTAssertNotNil(caughtError as? Swift.DecodingError)
-        }
+        XCTAssertNotNil(caughtError as? Swift.DecodingError)
     }
 }
 

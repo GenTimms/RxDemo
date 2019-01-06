@@ -24,18 +24,17 @@ class RxPostsClient: RxClient {
     lazy var commentsSingle = modelData(ofType: Comment.self, from: commentRequest)
     lazy var usersSingle = modelData(ofType: User.self, from: userRequest)
     
-    func fetch(group: DispatchGroup? = nil, completion: @escaping (Result<[Post]>) -> Void) {
-        
-        Observable.zip(postsSingle.asObservable(), commentsSingle.asObservable(), usersSingle.asObservable()) { posts, comments, users in
-            self.completePosts(posts: posts, users: users, comments: comments)
-            }
-            .observeOn(MainScheduler.instance)
-            .subscribe(onNext: {
-                completion(Result.success($0))
-            }, onError: {
-                completion(Result.failure($0))
-                print("Error: \($0)") })
-            .disposed(by: disposeBag)
+    func fetch() -> Single<[Post]> {
+        return Single<[Post]>.create { [unowned self] single in
+         let zippedObservable = Observable.zip(self.postsSingle.asObservable(), self.commentsSingle.asObservable(), self.usersSingle.asObservable()) { posts, comments, users in
+                self.completePosts(posts: posts, users: users, comments: comments)
+                }
+                .observeOn(MainScheduler.instance)
+                .subscribe(onNext: { single(.success($0)) },
+                           onError: { single(.error($0)) })
+            
+            return Disposables.create([zippedObservable])
+        }
     }
     
     private func completePosts(posts: [Post], users: [User], comments: [Comment]) -> [Post] {

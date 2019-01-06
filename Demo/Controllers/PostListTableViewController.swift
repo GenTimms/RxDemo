@@ -8,12 +8,15 @@
 
 import UIKit
 import CoreData
+import RxSwift
+import RxCocoa
 
 class PostListTableViewController: UITableViewController, UISplitViewControllerDelegate {
     
     var client: RxPostsClient?
     var storageManager: PostStorageManager?
     var dataProvider: PostDataProvider?
+    let disposeBag = DisposeBag()
     
     //MARK: - ViewDidLoad
     override func viewDidLoad() {
@@ -43,17 +46,12 @@ class PostListTableViewController: UITableViewController, UISplitViewControllerD
     
     private func fetchPosts() {
         if let client = client {
-            client.fetch { (result) in
-                switch result {
-                case.success(let fetchedPosts): self.storageManager?.insert(fetchedPosts) { error in
-                    self.displayErrorNotification(description: "Database Update Error", error: error)
-                    }
-                case.failure(let error):
-                    self.displayErrorNotification(description: "Network Fetch Error", error: error)
-                    return
-                }
-                self.updateUI()
-            }
+            client.fetch().asObservable()
+                .subscribe(onNext: { self.storageManager?.insert($0) { error in self.displayErrorNotification(description: "Database Update Error", error: error) }
+                    self.updateUI()
+                },
+                           onError: { self.displayErrorNotification(description: "Network Fetch Error", error: $0)})
+                .disposed(by: disposeBag)
         }
     }
     

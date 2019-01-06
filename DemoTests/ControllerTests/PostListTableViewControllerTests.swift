@@ -9,6 +9,8 @@
 import XCTest
 import CoreData
 import UIKit
+import RxSwift
+
 @testable import Demo
 
 class PostListTableViewControllerTests: XCTestCase {
@@ -134,7 +136,7 @@ class PostListTableViewControllerTests: XCTestCase {
         XCTAssertEqual(detailViewController.post?.id, ModelStubs.posts[0].id)
     }
 }
-    
+
 extension PostListTableViewControllerTests {
     
     class MockDataProvider: PostDataProvider {
@@ -164,12 +166,15 @@ extension PostListTableViewControllerTests {
         var fetchCalled = false
         var success = true
         
-        override func fetch(group: DispatchGroup?, completion: @escaping (Result<[Post]>) -> Void) {
+        override func fetch() -> Single<[Post]> {
             fetchCalled = true
-            if success {
-                completion(Result.success(ModelStubs.posts))
-            } else {
-                completion(Result.failure(ClientData.error))
+            return Single<[Post]>.create { single in
+                if self.success {
+                    single(.success(ModelStubs.posts))
+                } else {
+                    single(.error(ClientData.error))
+                }
+                return Disposables.create {}
             }
         }
     }

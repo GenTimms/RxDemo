@@ -16,6 +16,6 @@ protocol RxClient {
     
     var sessionObservable: Observable<Data>? { get set }
     
-    func fetch(group: DispatchGroup?, completion: @escaping (Result<[fetchedObject]>) -> Void)
+    func fetch() -> Single<[fetchedObject]>
     
 }
