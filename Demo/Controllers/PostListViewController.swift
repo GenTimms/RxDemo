@@ -11,7 +11,9 @@ import CoreData
 import RxSwift
 import RxCocoa
 
-class PostListTableViewController: UITableViewController, UISplitViewControllerDelegate {
+class PostListViewController: UIViewController, UISplitViewControllerDelegate, UITableViewDelegate {
+    
+    @IBOutlet weak var tableView: UITableView!
     
     var client: RxPostsClient?
     var storageManager: PostStorageManager?
@@ -22,9 +24,11 @@ class PostListTableViewController: UITableViewController, UISplitViewControllerD
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
+        initiateFetch()
     }
     
     private func configureTableView() {
+        tableView.delegate = self
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 140
         tableView.separatorInset = .zero
@@ -32,7 +36,7 @@ class PostListTableViewController: UITableViewController, UISplitViewControllerD
     
     //MARK: - Fetching
     func initiateFetch() {
-        guard let _ = client, let storageManager = storageManager else {
+        guard let tableView = tableView, let _ = client, let storageManager = storageManager else {
             return
         }
         
@@ -40,7 +44,8 @@ class PostListTableViewController: UITableViewController, UISplitViewControllerD
             dataProvider = PostDataProvider(storageManager: storageManager)
         }
         
-        tableView.dataSource = dataProvider?.dataSource
+        tableView.dataSource = dataProvider?.dataSource 
+        self.updateUI()
         fetchPosts()
     }
     
@@ -50,11 +55,12 @@ class PostListTableViewController: UITableViewController, UISplitViewControllerD
                 .subscribe(onNext: { self.storageManager?.insert($0) { error in self.displayErrorNotification(description: "Database Update Error", error: error) }
                     self.updateUI()
                 },
-                           onError: { self.displayErrorNotification(description: "Network Fetch Error", error: $0)})
-                .disposed(by: disposeBag)
+                    onError: { self.displayErrorNotification(description: "Network Fetch Error", error: $0) })
+            .disposed(by: disposeBag)
         }
     }
     
+    //will ths be replaced?
     private func updateUI()  {
         dataProvider?.fetchData { error in
             if let error = error {
@@ -75,7 +81,7 @@ class PostListTableViewController: UITableViewController, UISplitViewControllerD
     }
     
     //MARK: - Navigation
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: Segues.detailSegue, sender: indexPath)
     }
     

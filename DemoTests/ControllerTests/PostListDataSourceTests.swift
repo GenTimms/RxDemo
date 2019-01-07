@@ -41,7 +41,7 @@ class PostListDataSourceTests: XCTestCase {
     }
     
     private func createTableView() -> UITableView? {
-        let controller = createPostListTableViewController()
+        let controller = createPostListViewController()
         if let tableView = controller.tableView {
             tableView.delegate = controller
             tableView.dataSource = sut
@@ -50,9 +50,9 @@ class PostListDataSourceTests: XCTestCase {
         return nil
     }
     
-    private func createPostListTableViewController() -> PostListTableViewController {
+    private func createPostListViewController() -> PostListViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "PostListViewController") as! PostListTableViewController
+        let controller = storyboard.instantiateViewController(withIdentifier: "PostListViewController") as! PostListViewController
         controller.loadViewIfNeeded()
         return controller
     }

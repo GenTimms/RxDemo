@@ -16,16 +16,17 @@ class PostCellTests: XCTestCase {
     override func setUp() {
         super.setUp()
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "PostListViewController") as! PostListTableViewController
+        let controller = storyboard.instantiateViewController(withIdentifier: "PostListViewController") as! PostListViewController
         
         controller.client = nil
         controller.storageManager = PostStorageManager(container: CoreDataTestStack().mockPersistentContainer)
-       
+       controller.loadViewIfNeeded()
+        
         let tableView = controller.tableView
         let dataSource = FakeDataSource()
         tableView?.dataSource = dataSource
         
-        cell = tableView?.dequeueReusableCell(withIdentifier: "Post Cell", for: IndexPath(row: 0, section: 0)) as! PostCell
+        cell = (tableView?.dequeueReusableCell(withIdentifier: "Post Cell", for: IndexPath(row: 0, section: 0)) as! PostCell)
     }
     
     func testHasTitleLabel() {

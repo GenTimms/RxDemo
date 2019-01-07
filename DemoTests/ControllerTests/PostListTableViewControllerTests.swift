@@ -1,5 +1,5 @@
 //
-//  PostListTableViewControllerTests.swift
+//  PostListViewControllerTests.swift
 //  DemoTests
 //
 //  Created by Genevieve Timms on 18/10/2018.
@@ -13,9 +13,9 @@ import RxSwift
 
 @testable import Demo
 
-class PostListTableViewControllerTests: XCTestCase {
+class PostListViewControllerTests: XCTestCase {
     
-    var sut: PostListTableViewController!
+    var sut: PostListViewController!
     
     let persistentContainer = CoreDataTestStack().mockPersistentContainer
     
@@ -23,7 +23,7 @@ class PostListTableViewControllerTests: XCTestCase {
     var storageManager: MockPostStorageManager!
     
     override func setUp() {
-        sut = createPostListTableViewController()
+        sut = createPostListViewController()
         
         client = MockPostsClient()
         storageManager = MockPostStorageManager(container: persistentContainer)
@@ -35,9 +35,9 @@ class PostListTableViewControllerTests: XCTestCase {
         UIApplication.shared.keyWindow?.rootViewController = sut
     }
     
-    private func createPostListTableViewController() -> PostListTableViewController {
+    private func createPostListViewController() -> PostListViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "PostListViewController") as! PostListTableViewController
+        let controller = storyboard.instantiateViewController(withIdentifier: "PostListViewController") as! PostListViewController
         controller.loadViewIfNeeded()
         return controller
     }
@@ -137,7 +137,7 @@ class PostListTableViewControllerTests: XCTestCase {
     }
 }
 
-extension PostListTableViewControllerTests {
+extension PostListViewControllerTests {
     
     class MockDataProvider: PostDataProvider {
         var fetchDataCalled = false

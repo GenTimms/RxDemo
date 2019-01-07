@@ -49,7 +49,7 @@
 		B4C6B721217CD9BE004AEC57 /* PostDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C6B720217CD9BE004AEC57 /* PostDataProvider.swift */; };
 		B4C6B723217D1F7A004AEC57 /* PostDataProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C6B722217D1F7A004AEC57 /* PostDataProviderTests.swift */; };
 		B4CC5ACE2157D5D300FECC3D /* Posts.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B4CC5ACC2157D5D300FECC3D /* Posts.xcdatamodeld */; };
-		B4D642A12143C7C7005A587F /* PostListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D642A02143C7C7005A587F /* PostListTableViewController.swift */; };
+		B4D642A12143C7C7005A587F /* PostListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D642A02143C7C7005A587F /* PostListViewController.swift */; };
 		B4D642A32143CBCD005A587F /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D642A22143CBCC005A587F /* Utilities.swift */; };
 		B4D642A52143CCD8005A587F /* PostListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D642A42143CCD8005A587F /* PostListDataSource.swift */; };
 		B4D642B421441CCF005A587F /* ModelStubs.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D642B321441CCF005A587F /* ModelStubs.swift */; };
@@ -143,7 +143,7 @@
 		B4C6B720217CD9BE004AEC57 /* PostDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDataProvider.swift; sourceTree = "<group>"; };
 		B4C6B722217D1F7A004AEC57 /* PostDataProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDataProviderTests.swift; sourceTree = "<group>"; };
 		B4CC5ACD2157D5D300FECC3D /* Posts.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Posts.xcdatamodel; sourceTree = "<group>"; };
-		B4D642A02143C7C7005A587F /* PostListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListTableViewController.swift; sourceTree = "<group>"; };
+		B4D642A02143C7C7005A587F /* PostListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListViewController.swift; sourceTree = "<group>"; };
 		B4D642A22143CBCC005A587F /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		B4D642A42143CCD8005A587F /* PostListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListDataSource.swift; sourceTree = "<group>"; };
 		B4D642B321441CCF005A587F /* ModelStubs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelStubs.swift; sourceTree = "<group>"; };
@@ -412,7 +412,7 @@
 		B4D6429F2143C79A005A587F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				B4D642A02143C7C7005A587F /* PostListTableViewController.swift */,
+				B4D642A02143C7C7005A587F /* PostListViewController.swift */,
 				B4D642A42143CCD8005A587F /* PostListDataSource.swift */,
 				B40351EE214599EB000DA66D /* PostDetailViewController.swift */,
 				B4C6B720217CD9BE004AEC57 /* PostDataProvider.swift */,
@@ -699,7 +699,7 @@
 				B476915821429DEF003CABF2 /* User.swift in Sources */,
 				B4DE8C912145835E006FDF66 /* PostStorageManager.swift in Sources */,
 				B403522521472A62000DA66D /* PostDetailView.swift in Sources */,
-				B4D642A12143C7C7005A587F /* PostListTableViewController.swift in Sources */,
+				B4D642A12143C7C7005A587F /* PostListViewController.swift in Sources */,
 				B4FBC9E021DC2B3600329642 /* RxClient.swift in Sources */,
 				B4FBC9DC21DC29CF00329642 /* RxPostsClient.swift in Sources */,
 				B40351F42145D1D6000DA66D /* Endpoint.swift in Sources */,

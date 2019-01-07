@@ -14,10 +14,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    //replace with will finish launching with options
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         if ProcessInfo.processInfo.environment["XCInjectBundleInto"] == nil {
-            if let postListViewController = window?.rootViewController?.contents as? PostListTableViewController {
+            if let postListViewController = window?.rootViewController?.contents as? PostListViewController {
                 postListViewController.storageManager = PostStorageManager()
                 postListViewController.client = RxPostsClient()
                 postListViewController.initiateFetch()

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2Eq-Ah-D3k">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2Eq-Ah-D3k">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -33,49 +32,78 @@
         <!--Post List-->
         <scene sceneID="k42-h0-8So">
             <objects>
-                <tableViewController storyboardIdentifier="PostListViewController" id="6iM-at-RPz" customClass="PostListTableViewController" customModule="Demo" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="PostListTableViewController" id="6iM-at-RPz" customClass="PostListTableViewController" customModule="Demo" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="2QL-0A-CLT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.25557264730000001" green="0.3818742027" blue="0.54736791510000005" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="separatorColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Post Cell" id="lCR-Mr-Mr6" customClass="PostCell" customModule="Demo">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lCR-Mr-Mr6" id="vTX-K8-jht">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AJr-eZ-TnP">
-                                            <rect key="frame" x="22" y="11" width="331" height="22"/>
-                                            <fontDescription key="fontDescription" name="IndieFlower" family="Indie Flower" pointSize="16"/>
-                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="AJr-eZ-TnP" secondAttribute="trailing" constant="6" id="GWo-pO-8GY"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="AJr-eZ-TnP" secondAttribute="bottom" id="K4e-nh-foV"/>
-                                        <constraint firstItem="AJr-eZ-TnP" firstAttribute="leading" secondItem="vTX-K8-jht" secondAttribute="leadingMargin" constant="6" id="Ofe-gE-kbF"/>
-                                        <constraint firstItem="AJr-eZ-TnP" firstAttribute="top" secondItem="vTX-K8-jht" secondAttribute="topMargin" id="j2l-Ku-mqI"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.25557264730000001" green="0.3818742027" blue="0.54736791510000005" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <outlet property="titleLabel" destination="AJr-eZ-TnP" id="cZZ-vr-NO2"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
                     </tableView>
                     <navigationItem key="navigationItem" title="Post List" id="QUe-Cb-Cyk"/>
-                    <connections>
-                        <segue destination="NUl-L3-6Ap" kind="showDetail" identifier="Show Post Detail" id="rsz-WX-72C"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K9G-r9-s8Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1592.8" y="-142.57871064467767"/>
+            <point key="canvasLocation" x="1383" y="-550"/>
+        </scene>
+        <!--Post List-->
+        <scene sceneID="AeE-B0-1uC">
+            <objects>
+                <viewController storyboardIdentifier="PostListViewController" id="gNx-ad-CC3" customClass="PostListViewController" customModule="Demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="L3u-RO-hb9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pNP-Zo-Y03">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="0.25557264730000001" green="0.3818742027" blue="0.54736791510000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="Post Cell" id="lCR-Mr-Mr6" customClass="PostCell" customModule="Demo">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lCR-Mr-Mr6" id="vTX-K8-jht">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AJr-eZ-TnP">
+                                                    <rect key="frame" x="21" y="11" width="333" height="22"/>
+                                                    <fontDescription key="fontDescription" name="IndieFlower" family="Indie Flower" pointSize="16"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="AJr-eZ-TnP" secondAttribute="trailing" constant="6" id="GWo-pO-8GY"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="AJr-eZ-TnP" secondAttribute="bottom" id="K4e-nh-foV"/>
+                                                <constraint firstItem="AJr-eZ-TnP" firstAttribute="leading" secondItem="vTX-K8-jht" secondAttribute="leadingMargin" constant="6" id="Ofe-gE-kbF"/>
+                                                <constraint firstItem="AJr-eZ-TnP" firstAttribute="top" secondItem="vTX-K8-jht" secondAttribute="topMargin" id="j2l-Ku-mqI"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.25557264730000001" green="0.3818742027" blue="0.54736791510000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <outlet property="titleLabel" destination="AJr-eZ-TnP" id="cZZ-vr-NO2"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="pNP-Zo-Y03" firstAttribute="top" secondItem="L3u-RO-hb9" secondAttribute="top" id="8Cg-R4-44N"/>
+                            <constraint firstItem="pNP-Zo-Y03" firstAttribute="bottom" secondItem="saq-XN-Dv3" secondAttribute="bottom" id="B7m-Jp-Xyr"/>
+                            <constraint firstItem="pNP-Zo-Y03" firstAttribute="trailing" secondItem="saq-XN-Dv3" secondAttribute="trailing" id="S6i-wF-zCf"/>
+                            <constraint firstItem="pNP-Zo-Y03" firstAttribute="leading" secondItem="saq-XN-Dv3" secondAttribute="leading" id="Zi3-GR-Til"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="saq-XN-Dv3"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Post List" id="zNb-nI-gQb"/>
+                    <connections>
+                        <outlet property="tableView" destination="pNP-Zo-Y03" id="Tck-fT-jTL"/>
+                        <segue destination="NUl-L3-6Ap" kind="showDetail" identifier="Show Post Detail" id="eYD-Df-A4q"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MmA-fn-m6h" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2261.5999999999999" y="-150.67466266866569"/>
         </scene>
         <!--Post Detail View Controller-->
         <scene sceneID="YRk-j9-rr0">
@@ -151,7 +179,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C8b-gB-wr8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1592.8" y="577.9610194902549"/>
+            <point key="canvasLocation" x="1593" y="615"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="uM0-Xr-hjy">
@@ -168,12 +196,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="6iM-at-RPz" kind="relationship" relationship="rootViewController" id="hOs-wJ-zLh"/>
+                        <segue destination="gNx-ad-CC3" kind="relationship" relationship="rootViewController" id="vhS-2b-4b2"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OAQ-Tb-lkm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="680.79999999999995" y="-141.67916041979012"/>
+            <point key="canvasLocation" x="580" y="-228"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bT9-0a-xpB">
@@ -195,6 +223,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="rsz-WX-72C"/>
+        <segue reference="eYD-Df-A4q"/>
     </inferredMetricsTieBreakers>
 </document>
