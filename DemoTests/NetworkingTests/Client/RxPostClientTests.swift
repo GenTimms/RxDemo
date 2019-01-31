@@ -26,7 +26,7 @@ class RxPostsClientTests: XCTestCase {
     }
     
     //MARK: - Live Testing
-    func xtestLiveFetch_FetchesCompletedPosts() {
+    func testLiveFetch_FetchesCompletedPosts() {
         
         var posts = [Post]()
         var caughtError: Error? = nil
@@ -46,142 +46,138 @@ class RxPostsClientTests: XCTestCase {
         XCTAssert(areCompleted)
     }
     
-    func xtestLiveFetch_WithFakeURL_ReturnsError() {
-        sut.postRequest = URLRequest(url: URL(string: "http://fakeURL.com")!)
+    func testLiveFetch_WithFakeURL_ReturnsError() {
+        sut.requestData.postRequest = URLRequest(url: URL(string: "http://fakeURL.com")!)
         XCTAssertThrowsError(try sut.fetch().asObservable().toBlocking().single())
     }
     
-    func xtestLiveFetch_WithNilRequest_ReturnsError() {
-        sut.postRequest = nil
+    func testLiveFetch_WithNilRequest_ReturnsError() {
+        sut.requestData.postRequest = nil
         XCTAssertThrowsError(try sut.fetch().asObservable().toBlocking().single())
     }
     
-    //MARK: - Mock Testing
-    var postsSingle: PrimitiveSequence<SingleTrait, [Post]>!
-    var commentsSingle: PrimitiveSequence<SingleTrait, [Comment]>!
-    var usersSingle: PrimitiveSequence<SingleTrait, [User]>!
-    
-    lazy var postObservable = scheduler.createHotObservable([
-        next(600, ClientData.postData!)])
-    lazy var commentObservable = scheduler.createHotObservable([
-        next(400, ClientData.commentData!)])
-    lazy var userObservable = scheduler.createHotObservable([
-        next(200, ClientData.userData!)])
-    
-    func createSingles() {
-        sut.sessionObservable = postObservable.asObservable()
-        postsSingle = sut.postsSingle
-        
-        sut.sessionObservable = commentObservable.asObservable()
-        commentsSingle = sut.commentsSingle
-        
-        sut.sessionObservable = userObservable.asObservable()
-        usersSingle = sut.usersSingle
+
+    func injectMockObservables() {
+        sut.requestData.postSessionObservable = scheduler.createHotObservable([
+            next(600, ClientData.postData!)]).asObservable()
+        sut.requestData.commentSessionObservable = scheduler.createHotObservable([
+            next(400, ClientData.commentData!)]).asObservable()
+        sut.requestData.userSessionObservable = scheduler.createHotObservable([
+            next(200, ClientData.userData!)]).asObservable()
     }
-    
-    func testSinglesReturnParsedData() {
-        
-        let disposeBag = DisposeBag()
-        
-        createSingles()
-        
-        let postObserver = scheduler.createObserver([Post].self)
-        let commentObserver = scheduler.createObserver([Comment].self)
-        let userObserver = scheduler.createObserver([User].self)
-        
-        postsSingle.asObservable().subscribe(postObserver).disposed(by: disposeBag)
-        commentsSingle.asObservable().subscribe(commentObserver).disposed(by: disposeBag)
-        usersSingle.asObservable().subscribe(userObserver).disposed(by: disposeBag)
-        
-        scheduler.start()
-        
-        let posts = postObserver.events.first!.value.element!
-        let comments = commentObserver.events.first!.value.element!
-        let users = userObserver.events.first!.value.element!
-        
-        XCTAssertEqual(posts.count, 100)
-        XCTAssertEqual(comments.count, 500)
-        XCTAssertEqual(users.count, 10)
-    }
-    
+
     func testFetchReturnsCompletedPosts() {
-        
+
         let disposeBag = DisposeBag()
-        createSingles()
-        
+        injectMockObservables()
+
         var posts = [Post]()
-        
+
         sut.fetch().asObservable()
             .subscribe(onNext: { posts = $0 },
                        onError: { XCTFail("Posts Fetch Failed: Error \($0.localizedDescription)")
             })
             .disposed(by: disposeBag)
-        
+
         scheduler.start()
-        
+
         XCTAssertEqual(posts.count,100)
-        
+
         let commentCounts = Set(posts.map{$0.comments.count})
         let have5Comments = commentCounts.count == 1 ? commentCounts.first == 5 ? true : false : false
         let haveUsers = posts.compactMap{$0.user}.count == 100
         let areCompleted = have5Comments && haveUsers
         XCTAssert(areCompleted)
     }
-    
+
     func testFetch_WithNilRequest_ReturnsError() {
-        
+
         let disposeBag = DisposeBag()
-        sut.postRequest = nil
+        injectMockObservables()
         
-        createSingles()
+        sut.requestData.postSessionObservable = nil
+        sut.requestData.postRequest = nil
+
         var caughtError: Error? = nil
-        
+
         sut.fetch().asObservable()
             .subscribe(onNext: { XCTFail("Fetch succeeded with fake request, received next event: \($0)") },
                        onError: { caughtError = $0 })
             .disposed(by: disposeBag)
-        
+
         scheduler.start()
         XCTAssertNotNil(caughtError as? RequestError)
     }
-    
+
     func testFetch_withNetworkError_ReturnsError() {
-        
+
         let disposeBag = DisposeBag()
-        
-        userObservable = scheduler.createHotObservable([
-            error(200, RequestError.invalidResponse)])
-        
-        createSingles()
-        
+
+        injectMockObservables()
+
+            sut.requestData.userSessionObservable = scheduler.createHotObservable([
+                error(200, RequestError.invalidResponse)]).asObservable()
+
         var caughtError: Error? = nil
-        
+
         sut.fetch().asObservable()
             .subscribe(onNext: { XCTFail("Fetch succeeded with userErrorObservable event: \($0)") },
                        onError: { caughtError = $0 })
             .disposed(by: disposeBag)
-        
-        _ = usersSingle.asObservable().subscribe{ print("UserSingle Event: \($0)") }
-        
+
         scheduler.start()
         XCTAssertNotNil(caughtError as? RequestError)
     }
-    
+
     func testFetch_withFakeData_ReturnsDecodingError() {
         let disposeBag = DisposeBag()
-        commentObservable = scheduler.createHotObservable([next(300, ClientData.fakeData!)])
         
-        createSingles()
-        
+        injectMockObservables()
+        sut.requestData.commentSessionObservable = scheduler.createHotObservable([next(300, ClientData.fakeData!)]).asObservable()
+
         var caughtError: Error? = nil
-        
+
         sut.fetch().asObservable()
             .subscribe(onNext: { XCTFail("Fake data succeeded, event: \($0)") },
                        onError: { caughtError = $0 })
             .disposed(by: disposeBag)
-        
+
         scheduler.start()
         XCTAssertNotNil(caughtError as? Swift.DecodingError)
+    }
+
+    func testSecondFetch() {
+
+            let disposeBag = DisposeBag()
+            injectMockObservables()
+
+            sut.fetch().asObservable()
+                .debug()
+                .subscribe(onNext: { print("Posts: \($0)") },
+                           onError: {  print("Error: \($0)")
+                })
+                .disposed(by: disposeBag)
+
+            scheduler.start()
+
+        injectMockObservables()
+        sut.fetch().asObservable()
+            .debug()
+            .subscribe(onNext: { print("Posts 2: \($0)") },
+                       onError: {  print("Error 2: \($0)")
+            })
+            .disposed(by: disposeBag)
+
+        scheduler.start()
+        }
+    
+    func xtestLiveSecondFetch() {
+
+        let posts1 = try? sut.fetch().toBlocking().single()
+        let posts2 =  try? sut.fetch().toBlocking().single()
+        
+        print("Posts 1: \(posts1)")
+        print("Posts 2: \(posts2)")
     }
 }
 

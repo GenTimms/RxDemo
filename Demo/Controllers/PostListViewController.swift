@@ -17,6 +17,7 @@ class PostListViewController: UIViewController, UISplitViewControllerDelegate, U
     
     var client: RxPostsClient?
     var storageManager: PostStorageManager?
+    
     var dataProvider: PostDataProvider?
     let disposeBag = DisposeBag()
     
@@ -90,6 +91,9 @@ class PostListViewController: UIViewController, UISplitViewControllerDelegate, U
             if let postDetailVC = segue.destination.contents as? PostDetailViewController {
                 if let indexPath = sender as? IndexPath {
                     postDetailVC.post = dataProvider?.objectAt(indexPath: indexPath)
+                    collapseDetailViewController = false
+                } else if let post = sender as? Post {
+                    postDetailVC.post = post
                     collapseDetailViewController = false
                 }
             }

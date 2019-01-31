@@ -1,32 +1,33 @@
 //
-//  RXPostsClient.swift
+//  RxPostsClient2.swift
 //  Demo
 //
-//  Created by Genevieve Timms on 15/12/2018.
-//  Copyright © 2018 GMJT. All rights reserved.
+//  Created by Genevieve Timms on 09/01/2019.
+//  Copyright © 2019 GMJT. All rights reserved.
 //
-
 import Foundation
 import RxSwift
 import RxCocoa
 
-class RxPostsClient: RxClient {
+class RxPostsClient {
     
-    let disposeBag = DisposeBag()
+let disposeBag = DisposeBag()
     
-    var sessionObservable: Observable<Data>?
+    var requestData : RequestData
     
-    var postRequest = PostsEndpoints.posts.request
-    var commentRequest = PostsEndpoints.comments.request
-    var userRequest = PostsEndpoints.users.request
+    init(requestData: RequestData) {
+        self.requestData = requestData
+    }
     
-    lazy var postsSingle = modelData(ofType: Post.self, from: postRequest)
-    lazy var commentsSingle = modelData(ofType: Comment.self, from: commentRequest)
-    lazy var usersSingle = modelData(ofType: User.self, from: userRequest)
+    convenience init() {
+        self.init(requestData: RequestData())
+    }
     
     func fetch() -> Single<[Post]> {
         return Single<[Post]>.create { [unowned self] single in
-         let zippedObservable = Observable.zip(self.postsSingle.asObservable(), self.commentsSingle.asObservable(), self.usersSingle.asObservable()) { posts, comments, users in
+            let zippedObservable = Observable.zip(self.modelData(ofType: Post.self).asObservable(),
+                                                  self.modelData(ofType: Comment.self).asObservable(),
+                                                  self.modelData(ofType: User.self).asObservable()) { posts, comments, users in
                 self.completePosts(posts: posts, users: users, comments: comments)
                 }
                 .observeOn(MainScheduler.instance)
@@ -45,15 +46,13 @@ class RxPostsClient: RxClient {
         return posts
     }
     
-    private func modelData<T: Codable>(ofType type: T.Type, from request: URLRequest?) -> Single<[T]> {
-        return Single<[T]>.create { [sessionObservable] single in
-            
-            guard let request = request else {
+    private func modelData<T: Codable>(ofType type: T.Type) -> Single<[T]> {
+        return Single<[T]>.create { [requestData] single in
+
+            guard let observableData = requestData.sessionObservable(for: type) else {
                 single(.error(RequestError.invalidRequest))
                 return Disposables.create {}
             }
-            
-            let observableData = sessionObservable ?? URLSession.shared.rx.data(request: request)
             
             let urlSessionDisposable = observableData
                 .map { try $0.createArray(ofType: type)}

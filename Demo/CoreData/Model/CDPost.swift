@@ -17,7 +17,7 @@ class CDPost: NSManagedObject {
         return Post(id: id, userId: userId, title: title!, body: body!, user: modelUser, comments: modelComments)
     }
     
-    class func findOrCreate(from posts: [Post], in context: NSManagedObjectContext) throws -> [CDPost] {
+    @discardableResult class func findOrCreate(from posts: [Post], in context: NSManagedObjectContext) throws -> [CDPost] {
         
         var existingPosts = [CDPost]()
         
