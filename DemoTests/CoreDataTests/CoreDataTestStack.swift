@@ -50,14 +50,15 @@ class MockManagedObjectContext: NSManagedObjectContext {
     
     var saveThrows = false
     var saveWasCalled = false
-    
+    var fetchThrows = false
+
     override func performAndWait(_ block: () -> Void) {
         super.performAndWait(block)
         expectation?.fulfill()
     }
     
     override func save() throws {
-        let testError = NSError(domain: "SomeError", code: 1245, userInfo: nil)
+        let testError = NSError(domain: "MockSaveError", code: 1245, userInfo: nil)
         
         if saveThrows {
             throw testError
@@ -65,6 +66,16 @@ class MockManagedObjectContext: NSManagedObjectContext {
         
         try super.save()
         saveWasCalled = true
+    }
+    
+    override func fetch(_ request: NSFetchRequest<NSFetchRequestResult>) throws -> [Any] {
+        let testError = NSError(domain: "MockFetchError", code: 1245, userInfo: nil)
+        
+        if fetchThrows {
+            throw testError
+        }
+        
+        return try super.fetch(request)
     }
 }
 
