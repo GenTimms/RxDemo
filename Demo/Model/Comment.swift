@@ -22,3 +22,12 @@ class Comment: Codable  {
         self.body = body
     }
 }
+
+extension Comment: Equatable {
+    static func == (lhs: Comment, rhs: Comment) -> Bool {
+        return lhs.id == rhs.id &&
+                    lhs.postId == rhs.postId &&
+                    lhs.name == rhs.name &&
+                    lhs.body == rhs.body
+    }
+}

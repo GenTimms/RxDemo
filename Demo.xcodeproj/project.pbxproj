@@ -43,6 +43,7 @@
 		B47691602142B840003CABF2 /* CDUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B476915F2142B840003CABF2 /* CDUser.swift */; };
 		B47A3FDD220053E3005B17EB /* RequestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47A3FDC220053E3005B17EB /* RequestData.swift */; };
 		B47A3FDF2200A23B005B17EB /* RequestDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47A3FDE2200A23B005B17EB /* RequestDataTests.swift */; };
+		B4860863220595CF002BB32D /* PostViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4860862220595CF002BB32D /* PostViewModelTests.swift */; };
 		B48B8181216E35A800BF6640 /* PostListDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48B8180216E35A800BF6640 /* PostListDataSourceTests.swift */; };
 		B48B8183216E371100BF6640 /* PostStorageManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48B8182216E371100BF6640 /* PostStorageManagerTests.swift */; };
 		B4A0048521453352005F2ADD /* PostsEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4A0048421453352005F2ADD /* PostsEndpoints.swift */; };
@@ -140,6 +141,7 @@
 		B476915F2142B840003CABF2 /* CDUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDUser.swift; sourceTree = "<group>"; };
 		B47A3FDC220053E3005B17EB /* RequestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestData.swift; sourceTree = "<group>"; };
 		B47A3FDE2200A23B005B17EB /* RequestDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestDataTests.swift; sourceTree = "<group>"; };
+		B4860862220595CF002BB32D /* PostViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModelTests.swift; sourceTree = "<group>"; };
 		B48B8180216E35A800BF6640 /* PostListDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostListDataSourceTests.swift; sourceTree = "<group>"; };
 		B48B8182216E371100BF6640 /* PostStorageManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostStorageManagerTests.swift; sourceTree = "<group>"; };
 		B4A0048421453352005F2ADD /* PostsEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsEndpoints.swift; sourceTree = "<group>"; };
@@ -444,6 +446,7 @@
 				B48B8180216E35A800BF6640 /* PostListDataSourceTests.swift */,
 				B475A61E2178FAE90090CE20 /* PostListTableViewControllerTests.swift */,
 				B4C6B722217D1F7A004AEC57 /* PostDataProviderTests.swift */,
+				B4860862220595CF002BB32D /* PostViewModelTests.swift */,
 			);
 			path = ControllerTests;
 			sourceTree = "<group>";
@@ -656,6 +659,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-DemoTests/Pods-DemoTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/RxBlocking/RxBlocking.framework",
 				"${BUILT_PRODUCTS_DIR}/RxTest/RxTest.framework",
@@ -665,6 +669,7 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxBlocking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxTest.framework",
@@ -749,6 +754,7 @@
 				B4D642B421441CCF005A587F /* ModelStubs.swift in Sources */,
 				B48B8183216E371100BF6640 /* PostStorageManagerTests.swift in Sources */,
 				B403520C21467530000DA66D /* CodableCommentTests.swift in Sources */,
+				B4860863220595CF002BB32D /* PostViewModelTests.swift in Sources */,
 				B4F06DF1215D843100F7EEB0 /* PostDetailViewControllerTests.swift in Sources */,
 				B475A61F2178FAE90090CE20 /* PostListTableViewControllerTests.swift in Sources */,
 				B4C6B723217D1F7A004AEC57 /* PostDataProviderTests.swift in Sources */,

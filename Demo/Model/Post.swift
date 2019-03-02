@@ -32,5 +32,17 @@ class Post: Codable {
         case title
         case body
     }
-}     
+
+}
+
+extension Post: Equatable {
+    static func == (lhs: Post, rhs: Post) -> Bool {
+        return lhs.id == rhs.id &&
+                    lhs.userId == rhs.userId &&
+                    lhs.title == rhs.title &&
+                    lhs.body == rhs.body &&
+                    lhs.user == rhs.user &&
+                    lhs.comments == rhs.comments
+    }
+}
 
