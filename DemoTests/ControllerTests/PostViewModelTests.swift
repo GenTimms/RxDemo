@@ -41,7 +41,7 @@ class PostViewModelTests: XCTestCase {
         storageManager.fetchResult = databaseResult
         client = MockClient()
         client.fetchResult = networkResult
-
+        
         sut = PostViewModel(client: client, storageManager: storageManager)
         scheduler = TestScheduler(initialClock: 0)
     }
@@ -51,11 +51,11 @@ class PostViewModelTests: XCTestCase {
         super.tearDown()
     }
     
-   // MARK: - Fetching
+    // MARK: - Fetching
     func testRefreshDataMethod_FetchesMockNetworkData() {
         var caughtResult: [Post]?
         var caughtError: Error?
-
+        
         subscription = sut.networkData.subscribe(onNext: { caughtResult = $0
         }, onError: { caughtError = $0 })
         sut.refreshData()
@@ -64,145 +64,160 @@ class PostViewModelTests: XCTestCase {
         XCTAssertEqual(caughtResult, networkPosts)
     }
     
-        func testDataBaseDataObservable_FetchesFromDatabase() {
-            var caughtResult: [Post]?
-            var caughtError: Error?
-            
-            subscription = sut.databaseData.subscribe(onNext: { caughtResult = $0
-            }, onError: { caughtError = $0 })
-
-            XCTAssertNil(caughtError)
-            XCTAssertEqual(caughtResult, databasePosts)
-        }
-    
-        //Data Driver
-        func testDataDriver_SubscribedToNetworkData() {
-            let observer = scheduler.createObserver([Post].self)
-    
-            scheduler.scheduleAt(0) {
-                self.subscription = self.sut.data.drive(observer)
-            }
-    
-            scheduler.scheduleAt(100) {
-                self.sut.refreshData()
-            }
-    
-            scheduler.start()
-    
-            let results = observer.events.map {
-                $0.value.element!
-            }
-    
-            if let first = results.first {
-            XCTAssertEqual(first, networkPosts)
-            } else {
-            XCTFail("No Result")
-            }
-        }
-    
-        func testDataDriver_WithNetworkError_SubscribesToDatabaseFetch() {
-            let observer = scheduler.createObserver([Post].self)
-            
-            client.fetchResult =  Single.error(PostViewModelTests.networkError)
-            
-            scheduler.scheduleAt(0) {
-                self.subscription = self.sut.data.drive(observer)
-            }
-            
-            scheduler.scheduleAt(100) {
-                self.sut.refreshData()
-            }
-            
-            scheduler.start()
-            print(observer.events)
-           
-            if let first = observer.events.first {
-                XCTAssertEqual(first.value.element, databasePosts)
-            }
+    func testDataBaseDataObservable_FetchesFromDatabase() {
+        var caughtResult: [Post]?
+        var caughtError: Error?
+        
+        subscription = sut.databaseData.subscribe(onNext: { caughtResult = $0
+        }, onError: { caughtError = $0 })
+        
+        XCTAssertNil(caughtError)
+        XCTAssertEqual(caughtResult, databasePosts)
     }
     
-        func testDataDriver_WithNetworkAndDatabaseError_EmitsEmptyArray() {
-            let observer = scheduler.createObserver([Post].self)
-            
-            client.fetchResult = Single.error(PostViewModelTests.networkError)
-            storageManager.fetchResult = Single.error(PostViewModelTests.databaseError)
-            
-            scheduler.scheduleAt(0) {
-                self.subscription = self.sut.data.drive(observer)
-            }
-            
-            scheduler.scheduleAt(100) {
-                self.sut.refreshData()
-            }
-            
-            scheduler.start()
-            
-            if let first = observer.events.first {
-                XCTAssertEqual(first.value.element, [Post]())
-            }
+    //Data Driver
+    func testDataDriver_SubscribedToNetworkData() {
+        let observer = scheduler.createObserver([Post].self)
+        
+        scheduler.scheduleAt(0) {
+            self.subscription = self.sut.data.drive(observer)
         }
+        
+        scheduler.scheduleAt(100) {
+            self.sut.refreshData()
+        }
+        
+        scheduler.start()
+        
+        let results = observer.events.map {
+            $0.value.element!
+        }
+        
+        if let first = results.first {
+            XCTAssertEqual(first, networkPosts)
+        } else {
+            XCTFail("No Result")
+        }
+    }
     
-        //MARK: - Errors
-        func testErrorSubject_onNetworkError_EmitsErrorEvent() {
-            let disposeBag = DisposeBag()
-            var caughtError: Error?
-            
-            client.fetchResult = Single.error(PostViewModelTests.networkError)
-
-            sut.data.asObservable().subscribe { print("Data Event: \($0)") }.disposed(by: disposeBag)
-            subscription = sut.error.debug().subscribe(onNext: { caughtError = $0; print($0) })
-            sut.refreshData()
-            
-            XCTAssertEqual(caughtError as NSError?, PostViewModelTests.networkError)
+    func testDataDriver_WithNetworkError_SubscribesToDatabaseFetch() {
+        let observer = scheduler.createObserver([Post].self)
+        
+        client.fetchResult =  Single.error(PostViewModelTests.networkError)
+        
+        scheduler.scheduleAt(0) {
+            self.subscription = self.sut.data.drive(observer)
         }
+        
+        scheduler.scheduleAt(100) {
+            self.sut.refreshData()
+        }
+        
+        scheduler.start()
+        print(observer.events)
+        
+        if let first = observer.events.first {
+            XCTAssertEqual(first.value.element, databasePosts)
+        }
+    }
     
-        func testErrorSubject_onDatabaseFetchError_EmitsErrorEvent() {
-            let disposeBag = DisposeBag()
-            var caughtError: Error?
-            
-            storageManager.fetchResult = Single.error(PostViewModelTests.databaseError)
-            client.fetchResult = Single.error(PostViewModelTests.networkError)
-            
-            sut.data.asObservable().subscribe { print("Data Event: \($0)") }.disposed(by: disposeBag)
-            subscription = sut.error.subscribe(onNext: { caughtError = $0; print($0) })
-            sut.refreshData()
-            
-            XCTAssertEqual(caughtError as NSError?, PostViewModelTests.databaseError)
+    func testDataDriver_WithNetworkAndDatabaseError_EmitsEmptyArray() {
+        let observer = scheduler.createObserver([Post].self)
+        
+        client.fetchResult = Single.error(PostViewModelTests.networkError)
+        storageManager.fetchResult = Single.error(PostViewModelTests.databaseError)
+        
+        scheduler.scheduleAt(0) {
+            self.subscription = self.sut.data.drive(observer)
         }
+        
+        scheduler.scheduleAt(100) {
+            self.sut.refreshData()
+        }
+        
+        scheduler.start()
+        
+        if let first = observer.events.first {
+            XCTAssertEqual(first.value.element, [Post]())
+        }
+    }
     
-        func testErrorSubject_onDatabaseInsertError_EmitsErrorEvent() {
-            storageManager.insertResult = Completable.error(PostViewModelTests.insertError)
-            
-            var caughtError: Error?
-           
-            subscription = sut.error.subscribe(onNext: { caughtError = $0; print($0) })
-            sut.refreshData()
-            
-            XCTAssertEqual(caughtError as NSError?, PostViewModelTests.insertError)
+    //MARK: - Errors
+    func testErrorSubject_onNetworkError_EmitsAlertEvent() {
+        let disposeBag = DisposeBag()
+        var alert: Alert?
+        
+        client.fetchResult = Single.error(PostViewModelTests.networkError)
+        
+        sut.data.asObservable().subscribe { print("Data Event: \($0)") }.disposed(by: disposeBag)
+        subscription = sut.error.debug().subscribe(onNext: { alert = $0; print($0) })
+        sut.refreshData()
+        
+        XCTAssertNotNil(alert)
+        if let alertError = alert?.error as NSError? {
+            XCTAssertEqual(alertError, PostViewModelTests.networkError)
+        } else {
+            XCTFail("Missing Alert Error")
         }
+    }
+    
+    func testErrorSubject_onDatabaseFetchError_EmitsAlertEvent() {
+        let disposeBag = DisposeBag()
+        var alert: Alert?
+        
+        storageManager.fetchResult = Single.error(PostViewModelTests.databaseError)
+        client.fetchResult = Single.error(PostViewModelTests.networkError)
+        
+        sut.data.asObservable().subscribe { print("Data Event: \($0)") }.disposed(by: disposeBag)
+        subscription = sut.error.subscribe(onNext: { alert = $0; print($0) })
+        sut.refreshData()
+        
+        XCTAssertNotNil(alert)
+        if let alertError = alert?.error as NSError? {
+            XCTAssertEqual(alertError, PostViewModelTests.databaseError)
+        } else {
+            XCTFail("Missing Alert Error")
+        }
+    }
+    
+    func testErrorSubject_onDatabaseInsertError_EmitsErrorEvent() {
+        storageManager.insertResult = Completable.error(PostViewModelTests.insertError)
+        
+        var alert: Alert?
+        
+        subscription = sut.error.subscribe(onNext: { alert = $0; print($0) })
+        sut.refreshData()
+        
+        XCTAssertNotNil(alert)
+        if let alertError = alert?.error as NSError? {
+            XCTAssertEqual(alertError, PostViewModelTests.insertError)
+        } else {
+            XCTFail("Missing Alert Error")
+        }
+    }
 }
 
 extension PostViewModelTests {
     class MockPostStorageManager: PostStorageManager {
-
+        
         var fetchResult: Single<[Post]>?
         var insertResult: Completable?
         
         override func fetch() -> PrimitiveSequence<SingleTrait, Array<Post>> {
-                return fetchResult ?? Single.error(PostViewModelTests.nilError)
+            return fetchResult ?? Single.error(PostViewModelTests.nilError)
         }
-
+        
         override func rxInsert(_ posts: [Post]) -> Completable {
-                return insertResult ?? Completable.error(PostViewModelTests.nilError)
+            return insertResult ?? Completable.error(PostViewModelTests.nilError)
         }
     }
     
     class MockClient: RxPostsClient {
-
+        
         var fetchResult: Single<[Post]>?
-
+        
         override func fetch() -> PrimitiveSequence<SingleTrait, Array<Post>> {
-                return fetchResult ?? Single.error(PostViewModelTests.nilError)
+            return fetchResult ?? Single.error(PostViewModelTests.nilError)
         }
     }
 }
