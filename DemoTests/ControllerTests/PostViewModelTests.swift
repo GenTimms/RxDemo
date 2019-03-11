@@ -150,7 +150,7 @@ class PostViewModelTests: XCTestCase {
         client.fetchResult = Single.error(PostViewModelTests.networkError)
         
         sut.data.asObservable().subscribe { print("Data Event: \($0)") }.disposed(by: disposeBag)
-        subscription = sut.error.debug().subscribe(onNext: { alert = $0; print($0) })
+        subscription = sut.alerts.debug().subscribe(onNext: { alert = $0; print($0) })
         sut.refreshData()
         
         XCTAssertNotNil(alert)
@@ -169,7 +169,7 @@ class PostViewModelTests: XCTestCase {
         client.fetchResult = Single.error(PostViewModelTests.networkError)
         
         sut.data.asObservable().subscribe { print("Data Event: \($0)") }.disposed(by: disposeBag)
-        subscription = sut.error.subscribe(onNext: { alert = $0; print($0) })
+        subscription = sut.alerts.subscribe(onNext: { alert = $0; print($0) })
         sut.refreshData()
         
         XCTAssertNotNil(alert)
@@ -185,7 +185,7 @@ class PostViewModelTests: XCTestCase {
         
         var alert: Alert?
         
-        subscription = sut.error.subscribe(onNext: { alert = $0; print($0) })
+        subscription = sut.alerts.subscribe(onNext: { alert = $0; print($0) })
         sut.refreshData()
         
         XCTAssertNotNil(alert)

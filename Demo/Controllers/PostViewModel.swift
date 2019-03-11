@@ -26,7 +26,7 @@ class PostViewModel {
                 storageManager?.rxInsert(posts)
                                 .debug()
                                 .observeOn(MainScheduler.instance)
-                                .subscribe(onError: {self.error.onNext(Alert(title: "Database Error", message: "Could not insert posts into database", error: $0))})
+                                .subscribe(onError: {self.alerts.onNext(Alert(title: "Database Error", message: "Could not insert posts into database", error: $0))})
                     .disposed(by: self.disposeBag)
             })
         .disposed(by: disposeBag)
@@ -34,16 +34,17 @@ class PostViewModel {
     
     func refreshData() {
         refresh.onNext(())
+        print("Refreshing")
     }
     
     let refresh = PublishSubject<Void>()
-    let error = PublishSubject<Alert>()
+    let alerts = PublishSubject<Alert>()
     
     lazy var data: Driver<[Post]> = {
         return self.networkData.asDriver { error in
-            self.error.onNext(Alert(title: "Network Error", message: "Could not fetch from network", error: error))
+            self.alerts.onNext(Alert(title: "Network Error", message: "Could not fetch from network", error: error))
             return self.databaseData.asDriver { error in
-                self.error.onNext(Alert(title: "Database Error", message: "Could not fetch from database", error: error))
+                self.alerts.onNext(Alert(title: "Database Error", message: "Could not fetch from database", error: error))
                 return Driver.just([])
             }.debug()
         }
@@ -54,6 +55,7 @@ class PostViewModel {
             .debug()
             .throttle(3, scheduler: MainScheduler.instance)
             .flatMapLatest(client.fetch).asObservable()
+            .share() 
     }()
     
     lazy var databaseData: Observable<[Post]> = {

@@ -37,13 +37,13 @@ class PostStorageManager {
     }
     
     //MARK: - Fetch
-   private let fetchRequest: NSFetchRequest<CDPost> = {
+    private let fetchRequest: NSFetchRequest<CDPost> = {
         let request: NSFetchRequest<CDPost> = CDPost.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
         return request
     }()
-
-   func fetch() -> Single<[Post]>  {
+    
+    func fetch() -> Single<[Post]>  {
         return Single<[Post]>.create { single in
             do {
                 let posts = try self.viewContext.fetch(self.fetchRequest).map { $0.asPost() }
@@ -72,31 +72,6 @@ class PostStorageManager {
             }
             return disposable
         }
-    }
-
-    //MARK: - Old Non RX Methods 
-    func insert(_ posts: [Post], completion: @escaping (Error?) -> Void) {
-        backgroundContext.performAndWait  {
-             print("BackgroundContext Thread: \(Thread.current)")
-            _ = try? CDPost.findOrCreate(from: posts, in: backgroundContext)
-            do { try backgroundContext.save()
-            } catch {
-                completion(error)
-            }
-        }
-    }
-    
-    func createFetchedResultsController() -> NSFetchedResultsController<CDPost> {
-        let request: NSFetchRequest<CDPost> = CDPost.fetchRequest()
-        request.sortDescriptors = [NSSortDescriptor(key: "id", ascending: true)]
-        
-        let fetchedResultsController = NSFetchedResultsController<CDPost>(
-            fetchRequest: request,
-            managedObjectContext: viewContext,
-            sectionNameKeyPath: nil,
-            cacheName: nil)
-        
-        return fetchedResultsController
     }
 }
 

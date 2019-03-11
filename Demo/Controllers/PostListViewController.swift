@@ -11,91 +11,72 @@ import CoreData
 import RxSwift
 import RxCocoa
 
-class PostListViewController: UIViewController, UISplitViewControllerDelegate, UITableViewDelegate {
+class PostListViewController: UIViewController, UISplitViewControllerDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var client: RxPostsClient?
-    var storageManager: PostStorageManager?
+    var viewModel: PostViewModel! { didSet { bindViewModel() }}
     
-    var dataProvider: PostDataProvider?
     let disposeBag = DisposeBag()
     
     //MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         configureTableView()
-        initiateFetch()
+        bindViewModel()
     }
     
     private func configureTableView() {
-        tableView.delegate = self
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 140
         tableView.separatorInset = .zero
     }
     
-    //MARK: - Fetching
-    func initiateFetch() {
-        guard let tableView = tableView, let _ = client, let storageManager = storageManager else {
-            return
+    //MARK: - Binding to viewModel
+    func bindViewModel() {
+        if tableView != nil && viewModel != nil {
+            print("Binding")
+            bindTableView()
+            bindAlerts()
         }
-        
-        if dataProvider == nil {
-            dataProvider = PostDataProvider(storageManager: storageManager)
-        }
-        
-        tableView.dataSource = dataProvider?.dataSource 
-        self.updateUI()
-        fetchPosts()
     }
     
-    private func fetchPosts() {
-        if let client = client {
-            client.fetch().asObservable()
-                .subscribe(onNext: { self.storageManager?.insert($0) { error in self.displayErrorNotification(description: "Database Update Error", error: error) }
-                    self.updateUI()
-                },
-                    onError: { self.displayErrorNotification(description: "Network Fetch Error", error: $0) })
+    private func bindAlerts() {
+        viewModel.alerts.asObserver().subscribe(onNext: {
+            self.displayAlert($0)
+        })
             .disposed(by: disposeBag)
-        }
     }
     
-    //will ths be replaced?
-    private func updateUI()  {
-        dataProvider?.fetchData { error in
-            if let error = error {
-                displayErrorNotification(description: "Data Provider Fetch Error", error: error)
-                return
+    private func bindTableView() {
+        viewModel.data.drive(tableView.rx.items(cellIdentifier: Cells.postCell, cellType: PostCell.self)) { (_, post, cell) in
+            cell.configure(with: PostCellViewModel(post: post))
             }
-            tableView.reloadData()
-        }
+            .disposed(by: disposeBag)
+        
+        tableView.rx.modelSelected(Post.self)
+            .subscribe(onNext: {
+                self.performSegue(withIdentifier: Segues.detailSegue, sender: $0)
+            })
+            .disposed(by: disposeBag)
     }
     
     //MARK: - Error Handling
-    private func displayErrorNotification(description: String, error: Error?) {
-        let details = description + " " + ((error?.localizedDescription) ?? "")
+    private func displayAlert(_ alert: Alert) {
+        let details = alert.message + " " + ((alert.error?.localizedDescription) ?? "")
         print(details)
-        let alert = UIAlertController(title: "Error", message: description, preferredStyle: .alert)
+        let alert = UIAlertController(title: alert.title, message: alert.message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
     }
     
     //MARK: - Navigation
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: Segues.detailSegue, sender: indexPath)
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Segues.detailSegue {
-            if let postDetailVC = segue.destination.contents as? PostDetailViewController {
-                if let indexPath = sender as? IndexPath {
-                    postDetailVC.post = dataProvider?.objectAt(indexPath: indexPath)
-                    collapseDetailViewController = false
-                } else if let post = sender as? Post {
-                    postDetailVC.post = post
-                    collapseDetailViewController = false
-                }
+            if let postDetailVC = segue.destination.contents as? PostDetailViewController, let post = sender as? Post  {
+                postDetailVC.post = post
+                collapseDetailViewController = false
             }
         }
     }
