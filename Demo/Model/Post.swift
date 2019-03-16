@@ -32,7 +32,6 @@ class Post: Codable {
         case title
         case body
     }
-
 }
 
 extension Post: Equatable {

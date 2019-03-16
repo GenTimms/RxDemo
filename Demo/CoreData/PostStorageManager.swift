@@ -59,13 +59,12 @@ class PostStorageManager {
     func rxInsert(_ posts: [Post]) -> Completable {
         return Completable.create { completable in
             let disposable = Disposables.create {}
-            self.backgroundContext.perform { //AndWait
+            self.backgroundContext.perform { 
                 print("BackgroundContext Thread: \(Thread.current)")
                 do {
                     try CDPost.findOrCreate(from: posts, in: self.backgroundContext)
                     try self.backgroundContext.save()
                     completable(.completed)
-                    //posts.onNext?
                 } catch {
                     completable(.error(error))
                 }

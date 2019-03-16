@@ -38,8 +38,4 @@ class PostDetailViewModelTests: XCTestCase {
     func testInitWithPosts_SetsCommentCount() {
         XCTAssertEqual(postDetailViewModel.commentCount, "Comments: " + String(post.comments.count))
     }
-    
-    
-    
-    
 }

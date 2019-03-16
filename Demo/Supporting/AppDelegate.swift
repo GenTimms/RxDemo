@@ -14,10 +14,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    //Inject viewModel if not testing
-    //will finish launching with options?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        //Inject View Model (if not testing)
         if ProcessInfo.processInfo.environment["XCInjectBundleInto"] == nil {
             if let postListViewController = window?.rootViewController?.contents as? PostListViewController {
                 let viewModel = PostViewModel()

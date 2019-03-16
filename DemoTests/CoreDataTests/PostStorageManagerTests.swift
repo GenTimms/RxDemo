@@ -123,47 +123,4 @@ class PostStorageManagerTests: XCTestCase {
         XCTAssertNotNil(storageManager.backgroundContext)
         XCTAssertEqual(storageManager.viewContext, viewContext)
     }
-    
-    //MARK: - Old Tests
-    func testInsertPosts_InsertsPost() {
-        let performAndWaitExpectation = expectation(description: "Perform and Wait")
-        
-        backgoundContext.expectation = performAndWaitExpectation
-        
-        sut.insert([post]) { error in
-            XCTFail("Context Save Failed")
-        }
-        
-        waitForExpectations(timeout: 1) { _ in
-            let posts = try! self.fetchPosts()
-            guard let savedPost = posts.first else {
-                XCTFail("Post Missing")
-                return
-            }
-            
-            let fetchedPost = savedPost.asPost()
-            XCTAssertEqual(fetchedPost.id, self.post.id)
-        }
-    }
-    
-    func testInsertPosts_ReturnsErrorWhenSaveFails() {
-        let errorExpectation = expectation(description: "Save Error Expectation")
-        var caughtError: Error? = nil
-        
-        backgoundContext.saveThrows = true
-        
-        sut.insert([post]) { error in
-            caughtError = error
-            errorExpectation.fulfill()
-        }
-        waitForExpectations(timeout: 1) { _ in
-            XCTAssertNotNil(caughtError)
-        }
-    }
-    
-    func testCreateFetchedResultsController_ReturnsController() {
-        let fetchedResultsController = sut.createFetchedResultsController()
-        
-        XCTAssertEqual(fetchedResultsController.fetchRequest.entityName, "Post")
-    }
 }

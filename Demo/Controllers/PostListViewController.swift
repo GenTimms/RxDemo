@@ -16,7 +16,6 @@ class PostListViewController: UIViewController, UISplitViewControllerDelegate {
     @IBOutlet weak var tableView: UITableView!
     
     var viewModel: PostViewModel! { didSet { bindViewModel() }}
-    
     let disposeBag = DisposeBag()
     
     //MARK: - ViewDidLoad

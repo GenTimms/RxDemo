@@ -13,7 +13,7 @@ import RxSwift
 import XCTest
 @testable import Demo
 
-class RxPostsClientTests: XCTestCase {
+class PostsClientTests: XCTestCase {
     
     var sut: RxPostsClient!
     var scheduler: TestScheduler!

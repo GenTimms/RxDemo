@@ -36,5 +36,4 @@ class PostDetailViewControllerTests: XCTestCase {
         XCTAssertEqual(postDetailView.userLabel.text, post.user?.name)
         XCTAssertEqual(postDetailView.commentCountLabel.text, "Comments: \(post.comments.count)")
     }
-    
 }
